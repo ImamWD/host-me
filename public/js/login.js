@@ -68,7 +68,7 @@ function loginUser() //login api function
             localStorage.setItem('user_id', response.user_id);//store token in localStorage
             localStorage.setItem('user_type', response.user_type);//store token in localStorage
 
-            window.location.href = '/';//open home page after login succesfully
+            window.location.href = '/home';//open home page after login succesfully
         }
          else  //error for login input 400 incorrect email or pass , 401 formating error
          {

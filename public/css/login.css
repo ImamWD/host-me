@@ -10,8 +10,8 @@ body {
   font-weight: 300;
   height: 100%;
   width: 100%;
-  background: #DDD;
-
+  background: #DDD url('../images/signuplogin/login.gif');
+  background-repeat: no-repeat;
 }
 input,
 button {

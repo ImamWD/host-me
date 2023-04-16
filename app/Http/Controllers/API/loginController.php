@@ -35,10 +35,8 @@ class  loginController extends Controller
         if ($validator->fails()) {
             return response()->json(['error' => "Error for email or password format "], 400);
         }
-        $users = user::where('Email',"=", $request->email)->first();
-        if ($users) 
-        {
-            $users = user::where('passW',"=", $request->password)->value('ssn');
+        $users = user::where('Email',"=", $request->email)->where('passW', $request->password)->value('ssn');
+        
             if($users)
             {
                 $token = Str::random(80);
@@ -84,7 +82,6 @@ class  loginController extends Controller
                 }
                 return response()->json(['success' => true, 'token' => $token, 'user_id' => $users , 'user_type' => $user_type]);
             }
-        }
             return response()->json(['success' => false, 'error' => 'Invalid credentials'], 401);
     }
 
@@ -93,8 +90,7 @@ class  loginController extends Controller
         $validator = Validator::make($request->all(), [
             'name' => 'required|min:3|max:40',
             'email' => 'required|email|min:9|max:255|unique:users,email',
-            'password' =>'required|min:8|max:20',
-            'config_password' =>'required|min:8|max:20',  
+            'password' =>'required|min:8|max:20', 
         ]);
         if ($validator->fails()) {
             return response()->json(['errors' => $validator->errors()], 422);
@@ -133,7 +129,7 @@ class  loginController extends Controller
                 $customer = new customer;
                 $customer->ssn = $users;
                 $customer->save();
-                return response()->json(['signup'=>"1"],200);   
+                return response()->json(['signup'=>"success"],200);   
             }
         }
         else

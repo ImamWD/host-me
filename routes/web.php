@@ -17,6 +17,7 @@ use Illuminate\Support\Facades\Route;
     return view('welcome');
 });*/
 use App\Http\Controllers\login;
+use App\Http\Controllers\home;
 
 Route::get('/signup',[login::class,'signup']);
 Route::get('/',[login::class,'login']);
@@ -24,4 +25,4 @@ Auth::routes();
 
 Auth::routes();
 
-Route::get('/home', [App\Http\Controllers\HomeController::class, 'index'])->name('home');
+Route::get('/home', [App\Http\Controllers\home::class, 'index'])->name('home');
