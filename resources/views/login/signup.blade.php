@@ -29,7 +29,7 @@
             <input type="file" id="image" onchange="validation(this ,6)" />
             <p id="image_msg" class="ERER" ></p>
             <div class="btns">
-              <button id="submit-btn" class="btn login disabled" style="background-color:red ; color:white" onclick="signupUser()" >Sign Up </button>
+              <button id="submit-btn" class="btn login disabled" style="background-color:#16a085 ; color:white" onclick="signupUser()" >Sign Up </button>
               <a href="/"  class="btn login" name="signup_submit" > Login </a>
             </div>
        

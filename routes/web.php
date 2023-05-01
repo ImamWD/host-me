@@ -26,3 +26,6 @@ Auth::routes();
 Auth::routes();
 
 Route::get('/home', [App\Http\Controllers\home::class, 'index'])->name('home');
+Route::get('/OwnerEmployeesDashboard', function () {
+    return view('cruds.ownercruds.owneremployeescrud');
+});

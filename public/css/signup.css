@@ -140,7 +140,7 @@ input[type="password"]:focus {
   font-size: 28px;
   color: #000000;
   text-align: center;
-  padding-top: 50px;
+  padding-bottom: 70px;
 }
 
 button.social-signin {

@@ -3,6 +3,7 @@
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Route;
 use App\Http\Controllers\API\loginController;
+use App\Http\Controllers\API\usersController;
 /*
 |--------------------------------------------------------------------------
 | API Routes
@@ -19,3 +20,4 @@ Route::middleware('auth:sanctum')->get('/user', function (Request $request) {
 });
 Route::post('login', [loginController::class, 'login']);
 Route::post('customerSignup', [loginController::class, 'customerSignup']);
+Route::post('Usersinfo', [usersController::class, 'UsersInfo']);

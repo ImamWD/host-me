@@ -220,7 +220,10 @@ function apiError(ERR)
       text:'Signup is success',
       footer: '<a href="">Why do I have this issue?</a>'
     })
-    window.location.href = '/';
+    setTimeout(function() 
+    {
+      window.location.href = '/';  
+    }, 1000);
   }
 
 }
