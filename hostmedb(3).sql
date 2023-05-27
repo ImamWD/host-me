@@ -3,7 +3,7 @@
 -- https://www.phpmyadmin.net/
 --
 -- Host: 127.0.0.1
--- Generation Time: May 01, 2023 at 10:39 PM
+-- Generation Time: May 27, 2023 at 09:42 AM
 -- Server version: 10.4.24-MariaDB
 -- PHP Version: 8.1.6
 
@@ -51,6 +51,31 @@ CREATE TABLE `cart` (
 -- --------------------------------------------------------
 
 --
+-- Table structure for table `categories`
+--
+
+CREATE TABLE `categories` (
+  `id` int(11) NOT NULL,
+  `name` varchar(50) DEFAULT NULL,
+  `imageurl` varchar(255) DEFAULT NULL,
+  `created_at` date DEFAULT NULL,
+  `updated_at` date DEFAULT NULL
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
+
+--
+-- Dumping data for table `categories`
+--
+
+INSERT INTO `categories` (`id`, `name`, `imageurl`, `created_at`, `updated_at`) VALUES
+(6, 'Clothes', '/storage/categoryImages/i4THUP8Uz4VVTJrKRfWmo1RMMUYFydPnLSo5NQIC.png', '2023-05-26', '2023-05-26'),
+(7, 'Foods', '/storage/categoryImages/NVwfNJdiJ3zyJjxlRihy7NGaLQjXJZPz8y8wMRC1.png', '2023-05-26', '2023-05-26'),
+(8, 'Shoes', '/storage/categoryImages/0se2oYZKWle562CJYdJ3uqjnq2KdcNQ5mxqWH1Gf.png', '2023-05-26', '2023-05-26'),
+(10, 'Kitchen', '/storage/categoryImages/kQVXaE65CrszdDSLh1OEmCPCecjaKKZ9k5E7qYQZ.png', '2023-05-26', '2023-05-26'),
+(11, 'Accessories', '/storage/categoryImages/7kMM1I1tLF1uLTdp4Ngc2MpUww9iNBPNmkBvdlI0.png', '2023-05-26', '2023-05-26');
+
+-- --------------------------------------------------------
+
+--
 -- Table structure for table `categorycustomer`
 --
 
@@ -58,18 +83,6 @@ CREATE TABLE `categorycustomer` (
   `id` int(11) NOT NULL,
   `customer_id` int(11) DEFAULT NULL,
   `cat_id` int(11) DEFAULT NULL
-) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
-
--- --------------------------------------------------------
-
---
--- Table structure for table `categoryes`
---
-
-CREATE TABLE `categoryes` (
-  `id` int(11) NOT NULL,
-  `name` varchar(50) DEFAULT NULL,
-  `imageurl` varchar(255) DEFAULT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
 
 -- --------------------------------------------------------
@@ -113,26 +126,8 @@ CREATE TABLE `customers` (
 --
 
 INSERT INTO `customers` (`ssn`, `updated_at`, `created_at`) VALUES
-(64, '2023-04-09 21:43:38', '2023-04-09 21:43:38'),
-(65, '2023-04-09 21:44:42', '2023-04-09 21:44:42'),
-(66, '2023-04-09 21:46:21', '2023-04-09 21:46:21'),
-(67, '2023-04-09 21:47:35', '2023-04-09 21:47:35'),
-(68, '2023-04-09 21:48:14', '2023-04-09 21:48:14'),
-(69, '2023-04-09 22:07:27', '2023-04-09 22:07:27'),
-(70, '2023-04-09 22:09:51', '2023-04-09 22:09:51'),
-(71, '2023-04-09 22:11:09', '2023-04-09 22:11:09'),
-(72, '2023-04-09 22:18:42', '2023-04-09 22:18:42'),
-(73, '2023-04-15 21:29:10', '2023-04-15 21:29:10'),
-(74, '2023-04-15 23:16:25', '2023-04-15 23:16:25'),
-(75, '2023-04-15 23:18:02', '2023-04-15 23:18:02'),
-(76, '2023-04-15 23:20:51', '2023-04-15 23:20:51'),
-(77, '2023-04-15 23:23:14', '2023-04-15 23:23:14'),
-(78, '2023-04-15 23:30:57', '2023-04-15 23:30:57'),
-(79, '2023-04-15 23:32:21', '2023-04-15 23:32:21'),
-(80, '2023-04-15 23:43:18', '2023-04-15 23:43:18'),
-(81, '2023-04-16 00:07:56', '2023-04-16 00:07:56'),
-(82, '2023-04-16 00:20:44', '2023-04-16 00:20:44'),
-(85, '2023-04-28 19:28:05', '2023-04-28 19:28:05');
+(115, NULL, NULL),
+(116, NULL, NULL);
 
 -- --------------------------------------------------------
 
@@ -197,7 +192,7 @@ CREATE TABLE `owners` (
 --
 
 INSERT INTO `owners` (`ssn`, `KeyOwner`) VALUES
-(71, 1111);
+(108, 0);
 
 -- --------------------------------------------------------
 
@@ -209,19 +204,20 @@ CREATE TABLE `o_employees` (
   `ssn` int(11) NOT NULL,
   `access_o` varchar(255) DEFAULT NULL,
   `salary` float DEFAULT NULL,
-  `access_s` varchar(255) DEFAULT NULL
+  `access_s` varchar(255) DEFAULT NULL,
+  `created_at` datetime DEFAULT NULL,
+  `updated_at` datetime DEFAULT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
 
 --
 -- Dumping data for table `o_employees`
 --
 
-INSERT INTO `o_employees` (`ssn`, `access_o`, `salary`, `access_s`) VALUES
-(64, 'efd', 22, 'gdfgfdfdg'),
-(69, 'fdgfgf', 444, 'dfdfbfg'),
-(70, 'fgfbvbc', 22, 'sdfdfbvvb'),
-(83, 'efsdgdc', 221, 'sdfdsgvfv'),
-(84, 'wertgh', 55, 'sdfghn');
+INSERT INTO `o_employees` (`ssn`, `access_o`, `salary`, `access_s`, `created_at`, `updated_at`) VALUES
+(106, 'shop,category,', 500, 'oemployee,subscriber,', '2023-05-20 14:37:26', '2023-05-20 14:37:26'),
+(109, 'shop,adv,', 1200, NULL, '2023-05-20 14:47:36', '2023-05-20 14:47:36'),
+(110, 'shop,category,', 500, 'oemployee,subscriber,', '2023-05-20 15:23:06', '2023-05-20 15:23:06'),
+(112, 'shop,', 44, NULL, '2023-05-20 16:28:39', '2023-05-20 16:28:39');
 
 -- --------------------------------------------------------
 
@@ -322,8 +318,17 @@ CREATE TABLE `shops` (
   `logourl` varchar(255) DEFAULT NULL,
   `location` varchar(255) DEFAULT NULL,
   `created` date DEFAULT NULL,
-  `sub_id` int(11) DEFAULT NULL
+  `sub_id` int(11) DEFAULT NULL,
+  `created_at` date DEFAULT NULL,
+  `updated_at` date DEFAULT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
+
+--
+-- Dumping data for table `shops`
+--
+
+INSERT INTO `shops` (`id`, `Name`, `logourl`, `location`, `created`, `sub_id`, `created_at`, `updated_at`) VALUES
+(1, 'KldCompany', NULL, 'Nablus', '2023-05-01', 111, NULL, NULL);
 
 -- --------------------------------------------------------
 
@@ -341,7 +346,7 @@ CREATE TABLE `subscribers` (
 --
 
 INSERT INTO `subscribers` (`ssn`, `budget`) VALUES
-(70, 776);
+(111, 3500);
 
 -- --------------------------------------------------------
 
@@ -360,7 +365,8 @@ CREATE TABLE `s_employees` (
 --
 
 INSERT INTO `s_employees` (`ssn`, `s_ssn`, `access_s`) VALUES
-(75, 70, 'wefrrgdf');
+(113, 111, 'advs'),
+(114, 111, NULL);
 
 -- --------------------------------------------------------
 
@@ -387,28 +393,16 @@ CREATE TABLE `users` (
 --
 
 INSERT INTO `users` (`ssn`, `Name`, `active`, `Email`, `passW`, `api_token`, `Phone`, `Location`, `imageurl`, `updated_at`, `created_at`) VALUES
-(64, 'asdvc', 0, 'efdsdsf@gmail.com', 'oooo1111', 'GisvHPfrwsFkmWcqb2GnamdCgBblVT3tmtNUknHhCbYhaNb6NESAzxaTeFdekDY3VHayWnzpwj4fxw4u', NULL, NULL, NULL, '2023-04-09 21:43:38', '2023-04-09 21:43:38'),
-(65, 'wefdg', 1, 'wd@gmail.com', 'eeee1111', NULL, NULL, NULL, NULL, '2023-04-09 21:44:42', '2023-04-09 21:44:42'),
-(66, 'wfdv', 1, 'edfvx@gmail.com', 'qqqq1111', NULL, NULL, NULL, NULL, '2023-04-09 21:46:21', '2023-04-09 21:46:21'),
-(67, 'efrgbc', 1, 'dfsgdxc@gmail.com', 'yyyy1111', NULL, NULL, NULL, NULL, '2023-04-09 21:47:35', '2023-04-09 21:47:35'),
-(68, 'imam', 1, 'wdsxc@gmail.com', 'wwww1111', NULL, NULL, NULL, NULL, '2023-04-09 21:48:14', '2023-04-09 21:48:14'),
-(69, 'dgfb', 1, 'sdfv@gmail.com', 'wwww2222', NULL, NULL, NULL, NULL, '2023-04-09 22:07:27', '2023-04-09 22:07:27'),
-(70, 'dgfb', 0, 'imamaa@gmail.com', 'wwww2222', NULL, '0569402015', 'aaaa', NULL, '2023-04-09 22:09:51', '2023-04-09 22:09:51'),
-(71, 'Imam Ibrahim', 1, 'Imammosa537@gmail.com', 'imam12345', '8Ku1Uz0wKRtpfPmArwtZWzY1EoIJ1hUbsbNrk6VSqc3dGesRXGYie4QludgtaUYiizqIFdqOIS23VBYM', NULL, NULL, '/storage/userImages/Vd924AAJEpDDAbZ4MZW9X9Gtu8Myv5pGfv727HzU.jpg', '2023-04-09 22:11:09', '2023-04-09 22:11:09'),
-(72, 'Imam', 1, 'Imam@gmail.com', 'imam12345', 'UJMyadqrpN4On3XwWtbewSG7X0QH8LTSkCKFSbrDn2chZnuvGHaOUppnfnBaVqEGZ3zufShnqqiCRXG6', '+972569402015', 'Nablus', '/storage/userImages/JjlCpW4ASVOWsoNbNhkGITcdK6pGDkAEhgkuKPcK.jpg', '2023-04-09 22:18:42', '2023-04-09 22:18:42'),
-(73, 'Imam', 1, 'Imam223@gmail.com', 'Imam12345', NULL, '0569402015', 'Tulkarm', '/storage/userImages/EVBwj0i0yOloRWuv1uY4j2zY71hLimGN647Y3Bms.png', '2023-04-15 21:29:10', '2023-04-15 21:29:10'),
-(74, 'Imam Ibrahim', 1, 'QQQQ@gmail.com', 'imam12345', NULL, NULL, NULL, NULL, '2023-04-15 23:16:25', '2023-04-15 23:16:25'),
-(75, 'Imam', 1, 'ImammA@gmail.com', 'Imam12345', NULL, '0569402015', 'Adsas', '/storage/userImages/NDlvpTGF49Yfri296oRJprkov5ZMaG2z0rFCsner.png', '2023-04-15 23:18:02', '2023-04-15 23:18:02'),
-(76, 'Imam', 1, 'ergfdv@gmail.com', 'Imam1234', NULL, '0569402015', 'sfdsv', '/storage/userImages/V0A49F4m4SixQ20kCRjR9xcdGsRvR12d6Xnltvnk.png', '2023-04-15 23:20:51', '2023-04-15 23:20:51'),
-(77, 'Imam', 1, 'EWQ@gmail.com', 'Imam3333', NULL, '0569402015', NULL, '/storage/userImages/sdh90604Y7P2OqLhTvJfSx1n90bIsHvkRFHMHuJt.png', '2023-04-15 23:23:14', '2023-04-15 23:23:14'),
-(78, 'Imam', 1, 'Wqsd@gmail.com', 'Imam12345', NULL, NULL, NULL, NULL, '2023-04-15 23:30:57', '2023-04-15 23:30:57'),
-(79, 'Imam', 1, 'Wq11sd@gmail.com', 'Imam12345', NULL, NULL, NULL, '/storage/userImages/NhsiTDxq7Vx41UesXRN7RBMTGxlCQIUd2HUJqd1F.jpg', '2023-04-15 23:32:21', '2023-04-15 23:32:21'),
-(80, 'Osaw', 1, 'Osaw@gmail.com', 'Oooo1111', NULL, NULL, NULL, NULL, '2023-04-15 23:43:18', '2023-04-15 23:43:18'),
-(81, 'Rawand Aqel', 1, 'Rawand298@gmail.com', 'Rawand12345', '0NiIYDXn4M5uDfsiwX0oKVKP8qY29TNDxaNyWfYlgipXUkigKidzK7ZTpULct7hCCY027BlOgiI90DQb', '0569332214', 'Nablus', '/storage/userImages/FIjngyeSXiRbIAhavi3MjfRERw7UeUOLVKy1AHkG.png', '2023-04-16 00:07:56', '2023-04-16 00:07:56'),
-(82, 'Osfvfc', 1, 'Eds@gmail.com', 'Iamm12345', NULL, NULL, NULL, NULL, '2023-04-16 00:20:44', '2023-04-16 00:20:44'),
-(83, 'Ahmad', 1, 'Ahmad331@gmail.com', 'Ahmad12345', NULL, '0569333222', 'SSS', '/storage/userImages/1STieoqXj8SMekmMVx8rP3t8bBXwJ0YttBFAER5P.png', '2023-04-24 13:21:07', '2023-04-24 13:21:07'),
-(84, 'Allll', 1, 'dsf@gmail.com', 'Qqqq1234', NULL, '0569434343', 'hgbv', '/storage/userImages/RcejQiwR7lnBYcuaTzSLZKlnoTodmoimxHR6wGpR.png', '2023-04-24 20:03:07', '2023-04-24 20:03:07'),
-(85, 'ZZZ', 1, 'zzz@gmail.com', 'Zzzz1111', NULL, NULL, NULL, '/storage/userImages/c7v6brEFh1WorqIuJro6if2Kq0EBmonhK2Yvamhy.png', '2023-04-28 19:28:05', '2023-04-28 19:28:05');
+(106, 'Rami', 1, 'Rami123@gmail.com', 'Rami12345#', NULL, NULL, 'palestine', '/storage/userImages/QeJab0GHPycIxsRXPQOH13EyuNYPahI4ORksfSL9.jpg', '2023-05-20 14:37:26', '2023-05-20 14:37:26'),
+(108, 'Imam Ibrahim', 1, 'imammosa537@gmail.com', 'Imam1234', '5CTk7NTrxdW9iH737eXi0GLqhTnk4PoHOCJ8HBpsuEaeisu7SGySEN4NFF4vJz8Z4VB422GERHzMLAzm', '0569402015', 'Tulkarm', '/storage/userImages/GWD0N6zLNrjMNajHa1QkfjJY10vkE19lkohZsXo9.jpg', '2023-05-20 14:45:04', '2023-05-20 14:45:04'),
+(109, 'Sama', 1, 'Sama@gmail.com', 'Sama1234', NULL, '0569443322', 'Nablus', '/storage/userImages/nxqXFYrcKrOnYSkAVNJgwUQ8C5lGwscpcVyq5dMJ.jpg', '2023-05-20 14:47:36', '2023-05-20 14:47:36'),
+(110, 'Sami', 1, 'Sami@gmail.com', 'Sami1234', NULL, NULL, 'Nablus', '/storage/userImages/P2sKlDMVmhP9VW5eVLJHciIitNujYGhrcciMzEv2.jpg', '2023-05-20 15:23:06', '2023-05-20 15:23:06'),
+(111, 'Khalid', 1, 'Kk@gmail.com', 'Kkkk1111', NULL, NULL, NULL, '/storage/userImages/QGavuz8iFvwhiikdynYZ6x6Ty1vhLNcYDScGCtGT.jpg', '2023-05-20 15:44:56', '2023-05-20 15:44:56'),
+(112, 'Empw', 1, 'Ees@gmail.com', 'Eeee1111', NULL, NULL, NULL, '/storage/userImages/lftuIYsqe8GzWdwXoFDEadK7nI36o5VzoZZGZzhf.jpg', '2023-05-20 16:28:39', '2023-05-20 16:28:39'),
+(113, 'Qwsa', 1, 'Erw@gmail.com', 'WWww1111', NULL, NULL, NULL, '/storage/userImages/3jdrnLY5UUWhWXuMblO6uagdDJdzjykdnG6RBg81.jpg', '2023-05-20 16:29:36', '2023-05-20 16:29:36'),
+(114, 'Yuuu', 1, 'Yy@gmail.com', 'Yyyy1234', NULL, '0569402015', 'nablus', '/storage/userImages/KPgof6rREH4PDebsbAeIYfpYBeVhN1YLCnEeDZrN.jpg', '2023-05-20 16:40:46', '2023-05-20 16:40:46'),
+(115, 'Yaser', 1, 'YAs@gmail.com', 'Yyyy1111', NULL, '0569843276', 'nablus', '/storage/userImages/nnJzlEdGfe4VYcrOB7edCfdrotkBz2nRMJ0hfqtD.jpg', '2023-05-20 17:04:26', '2023-05-20 17:04:26'),
+(116, 'Sam', 1, 'Sam@gmail.com', 'Sam3333#', NULL, '0569404321', 'DD', '/storage/userImages/IdeGSNjp0DNMek2MTjjukB6vPUlKukFKBBArqvpH.jpg', '2023-05-20 17:07:34', '2023-05-20 17:07:34');
 
 -- --------------------------------------------------------
 
@@ -443,18 +437,18 @@ ALTER TABLE `cart`
   ADD KEY `customer_id` (`customer_id`);
 
 --
+-- Indexes for table `categories`
+--
+ALTER TABLE `categories`
+  ADD PRIMARY KEY (`id`);
+
+--
 -- Indexes for table `categorycustomer`
 --
 ALTER TABLE `categorycustomer`
   ADD PRIMARY KEY (`id`),
   ADD KEY `customer_id` (`customer_id`),
   ADD KEY `cat_id` (`cat_id`);
-
---
--- Indexes for table `categoryes`
---
-ALTER TABLE `categoryes`
-  ADD PRIMARY KEY (`id`);
 
 --
 -- Indexes for table `categoryproduct`
@@ -607,15 +601,15 @@ ALTER TABLE `cart`
   MODIFY `id` int(11) NOT NULL AUTO_INCREMENT;
 
 --
+-- AUTO_INCREMENT for table `categories`
+--
+ALTER TABLE `categories`
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=12;
+
+--
 -- AUTO_INCREMENT for table `categorycustomer`
 --
 ALTER TABLE `categorycustomer`
-  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT;
-
---
--- AUTO_INCREMENT for table `categoryes`
---
-ALTER TABLE `categoryes`
   MODIFY `id` int(11) NOT NULL AUTO_INCREMENT;
 
 --
@@ -682,13 +676,13 @@ ALTER TABLE `shopfeedback`
 -- AUTO_INCREMENT for table `shops`
 --
 ALTER TABLE `shops`
-  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT;
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=2;
 
 --
 -- AUTO_INCREMENT for table `users`
 --
 ALTER TABLE `users`
-  MODIFY `ssn` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=86;
+  MODIFY `ssn` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=117;
 
 --
 -- AUTO_INCREMENT for table `wishlist`
@@ -704,118 +698,118 @@ ALTER TABLE `wishlist`
 -- Constraints for table `advertisements`
 --
 ALTER TABLE `advertisements`
-  ADD CONSTRAINT `advertisements_ibfk_1` FOREIGN KEY (`sub_id`) REFERENCES `subscribers` (`ssn`);
+  ADD CONSTRAINT `advertisements_ibfk_1` FOREIGN KEY (`sub_id`) REFERENCES `subscribers` (`ssn`) ON DELETE CASCADE;
 
 --
 -- Constraints for table `cart`
 --
 ALTER TABLE `cart`
-  ADD CONSTRAINT `cart_ibfk_1` FOREIGN KEY (`product_id`) REFERENCES `products` (`id`),
-  ADD CONSTRAINT `cart_ibfk_2` FOREIGN KEY (`customer_id`) REFERENCES `customers` (`ssn`);
+  ADD CONSTRAINT `cart_ibfk_1` FOREIGN KEY (`product_id`) REFERENCES `products` (`id`) ON DELETE CASCADE,
+  ADD CONSTRAINT `cart_ibfk_2` FOREIGN KEY (`customer_id`) REFERENCES `customers` (`ssn`) ON DELETE CASCADE;
 
 --
 -- Constraints for table `categorycustomer`
 --
 ALTER TABLE `categorycustomer`
-  ADD CONSTRAINT `categorycustomer_ibfk_1` FOREIGN KEY (`customer_id`) REFERENCES `customers` (`ssn`),
-  ADD CONSTRAINT `categorycustomer_ibfk_2` FOREIGN KEY (`cat_id`) REFERENCES `categoryes` (`id`);
+  ADD CONSTRAINT `categorycustomer_ibfk_1` FOREIGN KEY (`customer_id`) REFERENCES `customers` (`ssn`) ON DELETE CASCADE,
+  ADD CONSTRAINT `categorycustomer_ibfk_2` FOREIGN KEY (`cat_id`) REFERENCES `categories` (`id`) ON DELETE CASCADE;
 
 --
 -- Constraints for table `categoryproduct`
 --
 ALTER TABLE `categoryproduct`
-  ADD CONSTRAINT `categoryproduct_ibfk_1` FOREIGN KEY (`product_id`) REFERENCES `products` (`id`),
-  ADD CONSTRAINT `categoryproduct_ibfk_2` FOREIGN KEY (`cat_id`) REFERENCES `categoryes` (`id`);
+  ADD CONSTRAINT `categoryproduct_ibfk_1` FOREIGN KEY (`product_id`) REFERENCES `products` (`id`) ON DELETE CASCADE,
+  ADD CONSTRAINT `categoryproduct_ibfk_2` FOREIGN KEY (`cat_id`) REFERENCES `categories` (`id`) ON DELETE CASCADE;
 
 --
 -- Constraints for table `categoryshop`
 --
 ALTER TABLE `categoryshop`
-  ADD CONSTRAINT `categoryshop_ibfk_1` FOREIGN KEY (`shop_id`) REFERENCES `shops` (`id`),
-  ADD CONSTRAINT `categoryshop_ibfk_2` FOREIGN KEY (`cat_id`) REFERENCES `categoryes` (`id`);
+  ADD CONSTRAINT `categoryshop_ibfk_1` FOREIGN KEY (`shop_id`) REFERENCES `shops` (`id`) ON DELETE CASCADE,
+  ADD CONSTRAINT `categoryshop_ibfk_2` FOREIGN KEY (`cat_id`) REFERENCES `categories` (`id`) ON DELETE CASCADE;
 
 --
 -- Constraints for table `customers`
 --
 ALTER TABLE `customers`
-  ADD CONSTRAINT `customers_ibfk_1` FOREIGN KEY (`ssn`) REFERENCES `users` (`ssn`);
+  ADD CONSTRAINT `customers_ibfk_1` FOREIGN KEY (`ssn`) REFERENCES `users` (`ssn`) ON DELETE CASCADE;
 
 --
 -- Constraints for table `orderproduct`
 --
 ALTER TABLE `orderproduct`
-  ADD CONSTRAINT `orderproduct_ibfk_1` FOREIGN KEY (`order_id`) REFERENCES `orders` (`id`),
-  ADD CONSTRAINT `orderproduct_ibfk_2` FOREIGN KEY (`product_id`) REFERENCES `products` (`id`);
+  ADD CONSTRAINT `orderproduct_ibfk_1` FOREIGN KEY (`order_id`) REFERENCES `orders` (`id`) ON DELETE CASCADE,
+  ADD CONSTRAINT `orderproduct_ibfk_2` FOREIGN KEY (`product_id`) REFERENCES `products` (`id`) ON DELETE CASCADE;
 
 --
 -- Constraints for table `orders`
 --
 ALTER TABLE `orders`
-  ADD CONSTRAINT `orders_ibfk_1` FOREIGN KEY (`customer_id`) REFERENCES `customers` (`ssn`);
+  ADD CONSTRAINT `orders_ibfk_1` FOREIGN KEY (`customer_id`) REFERENCES `customers` (`ssn`) ON DELETE CASCADE;
 
 --
 -- Constraints for table `owners`
 --
 ALTER TABLE `owners`
-  ADD CONSTRAINT `owners_ibfk_1` FOREIGN KEY (`ssn`) REFERENCES `users` (`ssn`);
+  ADD CONSTRAINT `owners_ibfk_1` FOREIGN KEY (`ssn`) REFERENCES `users` (`ssn`) ON DELETE CASCADE;
 
 --
 -- Constraints for table `o_employees`
 --
 ALTER TABLE `o_employees`
-  ADD CONSTRAINT `o_employees_ibfk_1` FOREIGN KEY (`ssn`) REFERENCES `users` (`ssn`);
+  ADD CONSTRAINT `o_employees_ibfk_1` FOREIGN KEY (`ssn`) REFERENCES `users` (`ssn`) ON DELETE CASCADE;
 
 --
 -- Constraints for table `payment`
 --
 ALTER TABLE `payment`
-  ADD CONSTRAINT `payment_ibfk_1` FOREIGN KEY (`user_id`) REFERENCES `users` (`ssn`);
+  ADD CONSTRAINT `payment_ibfk_1` FOREIGN KEY (`user_id`) REFERENCES `users` (`ssn`) ON DELETE CASCADE;
 
 --
 -- Constraints for table `productfeedback`
 --
 ALTER TABLE `productfeedback`
-  ADD CONSTRAINT `productfeedback_ibfk_1` FOREIGN KEY (`product_id`) REFERENCES `products` (`id`),
-  ADD CONSTRAINT `productfeedback_ibfk_2` FOREIGN KEY (`customer_id`) REFERENCES `customers` (`ssn`);
+  ADD CONSTRAINT `productfeedback_ibfk_1` FOREIGN KEY (`product_id`) REFERENCES `products` (`id`) ON DELETE CASCADE,
+  ADD CONSTRAINT `productfeedback_ibfk_2` FOREIGN KEY (`customer_id`) REFERENCES `customers` (`ssn`) ON DELETE CASCADE;
 
 --
 -- Constraints for table `products`
 --
 ALTER TABLE `products`
-  ADD CONSTRAINT `products_ibfk_1` FOREIGN KEY (`shop_id`) REFERENCES `shops` (`id`);
+  ADD CONSTRAINT `products_ibfk_1` FOREIGN KEY (`shop_id`) REFERENCES `shops` (`id`) ON DELETE CASCADE;
 
 --
 -- Constraints for table `shopfeedback`
 --
 ALTER TABLE `shopfeedback`
-  ADD CONSTRAINT `shopfeedback_ibfk_1` FOREIGN KEY (`shop_id`) REFERENCES `shops` (`id`),
-  ADD CONSTRAINT `shopfeedback_ibfk_2` FOREIGN KEY (`customer_id`) REFERENCES `customers` (`ssn`);
+  ADD CONSTRAINT `shopfeedback_ibfk_1` FOREIGN KEY (`shop_id`) REFERENCES `shops` (`id`) ON DELETE CASCADE,
+  ADD CONSTRAINT `shopfeedback_ibfk_2` FOREIGN KEY (`customer_id`) REFERENCES `customers` (`ssn`) ON DELETE CASCADE;
 
 --
 -- Constraints for table `shops`
 --
 ALTER TABLE `shops`
-  ADD CONSTRAINT `shops_ibfk_1` FOREIGN KEY (`sub_id`) REFERENCES `subscribers` (`ssn`);
+  ADD CONSTRAINT `shops_ibfk_1` FOREIGN KEY (`sub_id`) REFERENCES `subscribers` (`ssn`) ON DELETE CASCADE;
 
 --
 -- Constraints for table `subscribers`
 --
 ALTER TABLE `subscribers`
-  ADD CONSTRAINT `subscribers_ibfk_1` FOREIGN KEY (`ssn`) REFERENCES `users` (`ssn`);
+  ADD CONSTRAINT `subscribers_ibfk_1` FOREIGN KEY (`ssn`) REFERENCES `users` (`ssn`) ON DELETE CASCADE;
 
 --
 -- Constraints for table `s_employees`
 --
 ALTER TABLE `s_employees`
-  ADD CONSTRAINT `s_employees_ibfk_1` FOREIGN KEY (`ssn`) REFERENCES `users` (`ssn`),
-  ADD CONSTRAINT `s_employees_ibfk_2` FOREIGN KEY (`s_ssn`) REFERENCES `subscribers` (`ssn`);
+  ADD CONSTRAINT `s_employees_ibfk_1` FOREIGN KEY (`ssn`) REFERENCES `users` (`ssn`) ON DELETE CASCADE,
+  ADD CONSTRAINT `s_employees_ibfk_2` FOREIGN KEY (`s_ssn`) REFERENCES `subscribers` (`ssn`) ON DELETE CASCADE;
 
 --
 -- Constraints for table `wishlist`
 --
 ALTER TABLE `wishlist`
-  ADD CONSTRAINT `wishlist_ibfk_1` FOREIGN KEY (`product_id`) REFERENCES `products` (`id`),
-  ADD CONSTRAINT `wishlist_ibfk_2` FOREIGN KEY (`customer_id`) REFERENCES `customers` (`ssn`);
+  ADD CONSTRAINT `wishlist_ibfk_1` FOREIGN KEY (`product_id`) REFERENCES `products` (`id`) ON DELETE CASCADE,
+  ADD CONSTRAINT `wishlist_ibfk_2` FOREIGN KEY (`customer_id`) REFERENCES `customers` (`ssn`) ON DELETE CASCADE;
 COMMIT;
 
 /*!40101 SET CHARACTER_SET_CLIENT=@OLD_CHARACTER_SET_CLIENT */;

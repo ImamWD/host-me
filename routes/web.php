@@ -26,6 +26,28 @@ Auth::routes();
 Auth::routes();
 
 Route::get('/home', [App\Http\Controllers\home::class, 'index'])->name('home');
+
 Route::get('/OwnerEmployeesDashboard', function () {
     return view('cruds.ownercruds.owneremployeescrud');
+});
+
+Route::get('/OwnerDashboard', function () {
+    return view('cruds.ownercruds.ownercrud');
+});
+Route::get('/SubscriberDashboard', function () {
+    return view('cruds.ownercruds.subscribercrud');
+});
+Route::get('/SubscriberEmployeeDashboard', function () {
+    return view('cruds.ownercruds.subscriberemployeecrud');
+});
+Route::get('/CustomerDashboard', function () {
+    return view('cruds.ownercruds.customercrud');
+});
+
+Route::get('/HomeDashboard', function () {
+    return view('cruds.homecrud');
+});
+
+Route::get('/CategoryDashboard', function () {
+    return view('cruds.category.categorycrud');
 });

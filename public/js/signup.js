@@ -15,12 +15,13 @@ function signupUser() //signup api function
     formData.append('password', password);
     formData.append('config_password', config_pass);
     formData.append('location', location);
+    formData.append('type',4);
     formData.append('phone', phone);
     if(image.files[0])
     {
       formData.append('image', image.files[0]);
     }
-    fetch('api/customerSignup',
+    fetch('api/adduser',
      {
         method: 'POST',
         body: formData

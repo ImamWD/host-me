@@ -32,7 +32,7 @@ document.querySelector(".jsFilter").addEventListener("click", function () {
 {
     const formData = new FormData();
     formData.append('Auth', localStorage.getItem('token'));
-    formData.append('type', 1);
+    formData.append('type', 3);
 
     fetch('api/Usersinfo',
      {
@@ -124,9 +124,9 @@ function showdata(data)
       <div class="product-cell stock"><span class="cell-label">Password:</span><span style="overflow:auto; width:100px" >${data[key]['passW']}</span></div>
       <div class="product-cell price"><span class="cell-label">Phone:</span><span style="overflow:auto; width:100px" >${data[key]['Phone']}</span></div>
       <div class="product-cell price"><span class="cell-label">Location:</span><span style="overflow:auto; width:100px" >${data[key]['location']}</span></div>
-      <div class="product-cell price"><span class="cell-label">Salary:</span><span style="overflow:auto; width:100px" >${data[key]['salary']}</span></div>
+      <div class="product-cell price"><span class="cell-label">Company:</span><span style="overflow:auto; width:100px" >${data[key]['CNAME']}</span></div>
       <div class="product-cell price"><span class="cell-label">Web access:</span>
-      <button onclick='showaccess("${data[key]['o-access']}","${data[key]['s-access']}")' style="margin-right:1px" class="btn btn-info"><i class="fa-solid fa-eye" style="color: #ffffff;"></i></button>
+      <button style="margin-right:1px" class="btn btn-info"><i class="fa-solid fa-eye" style="color: #ffffff;"></i></button>
 
       </div>
       <div  class="product-cell price"><span class="cell-label">Events:</span> <span style="width:150px; display: flex; justify-content: flex-end; " >

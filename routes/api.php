@@ -4,6 +4,8 @@ use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Route;
 use App\Http\Controllers\API\loginController;
 use App\Http\Controllers\API\usersController;
+use App\Http\Controllers\API\categoryController;
+
 /*
 |--------------------------------------------------------------------------
 | API Routes
@@ -19,5 +21,8 @@ Route::middleware('auth:sanctum')->get('/user', function (Request $request) {
     return $request->user();
 });
 Route::post('login', [loginController::class, 'login']);
-Route::post('customerSignup', [loginController::class, 'customerSignup']);
+Route::post('adduser', [loginController::class, 'adduser']);
 Route::post('Usersinfo', [usersController::class, 'UsersInfo']);
+Route::post('deleteuser', [usersController::class, 'UsersDelete']);
+Route::post('addcategory', [categoryController::class, 'addcategory']);
+Route::post('categoryinfo', [categoryController::class, 'categoryinfo']);

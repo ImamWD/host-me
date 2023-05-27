@@ -43,27 +43,98 @@ class usersController extends Controller
                             case 0: // owner
                             {
                                 $UserType =  "owners";
+                               
+                                $users = User::join($UserType, 'users.ssn', '=', $UserType.'.ssn')
+                                ->select('users.ssn',
+                                'users.imageurl',
+                                'users.Name',
+                                'users.active',
+                                'users.Email', 
+                                'users.passW',
+                                'users.Phone',
+                                'users.location',
+                                $UserType.'.keyOwner'
+                                
+                        )
+                        ->get();
+                        return response()->json($users);
                                 break;
                             }
                             case 1: // o_employee
                             {
                                 $UserType =  "o_employees";
+                                $users = User::join($UserType, 'users.ssn', '=', $UserType.'.ssn')
+                                ->select('users.ssn',
+                                'users.imageurl',
+                                'users.Name',
+                                'users.active',
+                                'users.Email', 
+                                'users.passW',
+                                'users.Phone',
+                                'users.location',
+                                $UserType.'.salary',
+                                $UserType.'.access_o',
+                                $UserType.'.access_s'
+                        )
+                        ->get();
+                        return response()->json($users);
 
                                 break;
                             }
                             case 2: //subscriber
                             {
                                 $UserType =  "subscribers";
+                                $users = User::join($UserType, 'users.ssn', '=', $UserType.'.ssn')
+                                ->select('users.ssn',
+                                'users.imageurl',
+                                'users.Name',
+                                'users.active',
+                                'users.Email', 
+                                'users.passW',
+                                'users.Phone',
+                                'users.location',
+                                $UserType.'.budget'
+                                
+                        )
+                        ->get();
+                        return response()->json($users);
                                 break;
                             }
                             case 3: // s_employee
                             {
                                 $UserType =  "s_employees";
+                                $users = User::join($UserType, 'users.ssn', '=', $UserType.'.ssn')
+                                ->join('shops', $UserType.'.s_ssn', '=', 'shops.sub_id')
+                                ->select('users.ssn',
+                                'users.imageurl',
+                                'users.Name',
+                                'users.active',
+                                'users.Email', 
+                                'users.passW',
+                                'users.Phone',
+                                'users.location',
+                                $UserType.'.access_s',
+                                'shops.Name AS CNAME'
+                        )
+                        ->get();
+                        return response()->json($users);
                                 break;
                             }                
                             case 4: // customer
                             {
                                 $UserType =  "customers";
+                                $users = User::join($UserType, 'users.ssn', '=', $UserType.'.ssn')
+                                ->select('users.ssn',
+                                'users.imageurl',
+                                'users.Name',
+                                'users.active',
+                                'users.Email', 
+                                'users.passW',
+                                'users.Phone',
+                                'users.location'
+                        )
+                        ->get();
+                        return response()->json($users);
                                 break;
                             }
                             default :
@@ -71,17 +142,7 @@ class usersController extends Controller
                                 return response()->json(['Error' => "undefined user type"],205);
                             }
                         }
-                        $users = User::join($UserType, 'users.ssn', '=', $UserType.'.ssn')
-                        ->select('users.imageurl',
-                        'users.Name',
-                        'users.active',
-                        'users.Email', 
-                        'users.passW',
-                        'users.Phone',
-                        'users.location',
-                        $UserType.'.salary')
-                        ->get();
-                        return response()->json($users);
+                        
                     }
                     else
                     {
@@ -98,5 +159,24 @@ class usersController extends Controller
                 return response()->json(['Error' => "undefined key"],205);
             }
 
+    }
+    public function UsersDelete(Request $request)
+    {
+        if($request->has('Auth') && $request->Auth != NULL)   
+        {
+            $users = user::where('api_token',"=" , $request->Auth)->value('ssn');
+            if($users)
+            {
+                user::where('SSN', '=', $request->ssn)->delete();
+            }
+            else
+            {
+                return response()->json(['Error' => "No Auth"],205);
+            }
+        }
+        else
+        {
+                return response()->json(['Error' => "undefined key"],205);
+        }
     }
 }

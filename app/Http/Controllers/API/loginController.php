@@ -85,7 +85,7 @@ class  loginController extends Controller
             return response()->json(['success' => false, 'error' => 'Invalid credentials'], 401);
     }
 
-    public function customerSignup(Request $request)
+    public function adduser(Request $request)
     {
         $validator = Validator::make($request->all(), [
             'name' => 'required|min:3|max:40',
@@ -123,13 +123,45 @@ class  loginController extends Controller
 
             }    
             $user->save();
-            if($user)
+            if($user && $request->has('type') && $request->type != NULL)
             {
-                $users = user::where('Email',"=", $request->email)->value('ssn');
-                $customer = new customer;
-                $customer->ssn = $users;
-                $customer->save();
-                return response()->json(['signup'=>"success"],200);   
+                $userSsn = user::where('Email',"=", $request->email)->value('ssn');
+
+                if($request->type == 0) // owner
+                {   
+                }
+                elseif($request->type == 1)//o-employee
+                {
+                    if($request->has('access_o') && $request->has('access_s') && $request->has('salary'))
+                    {
+                        $o_employee = new o_employee;
+                        $o_employee->ssn = $userSsn ;
+                        $o_employee->access_o = $request->access_o;
+                        $o_employee->access_s = $request->access_s; 
+                        $o_employee->salary = $request->salary;
+                        $o_employee->save();
+
+                        return response()->json(['signup'=>"success"],200);   
+
+                       
+                    }
+                }
+                elseif($request->type == 2)//subscriper
+                {
+
+                }
+                elseif($request->type == 3)//s-employee
+                {
+
+                }
+                else//customer
+                {
+                    $customer = new customer;
+                    $customer->ssn = $userSsn;
+                    $customer->save();
+                    return response()->json(['signup'=>"success"],200);   
+                }
+               
             }
         }
         else
