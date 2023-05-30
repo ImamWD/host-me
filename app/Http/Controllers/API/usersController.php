@@ -104,7 +104,7 @@ class usersController extends Controller
                             {
                                 $UserType =  "s_employees";
                                 $users = User::join($UserType, 'users.ssn', '=', $UserType.'.ssn')
-                                ->join('shops', $UserType.'.s_ssn', '=', 'shops.sub_id')
+                                ->join('users as U', $UserType.'.s_ssn', '=', 'U.ssn')
                                 ->select('users.ssn',
                                 'users.imageurl',
                                 'users.Name',
@@ -114,7 +114,7 @@ class usersController extends Controller
                                 'users.Phone',
                                 'users.location',
                                 $UserType.'.access_s',
-                                'shops.Name AS CNAME'
+                                'U.Name AS CNAME'
                         )
                         ->get();
                         return response()->json($users);
@@ -131,7 +131,7 @@ class usersController extends Controller
                                 'users.Email', 
                                 'users.passW',
                                 'users.Phone',
-                                'users.location'
+                                'users.location',
                         )
                         ->get();
                         return response()->json($users);

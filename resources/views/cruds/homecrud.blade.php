@@ -103,7 +103,7 @@
                                         <div style="font-size: 16px"><i style="margin-right:3px " class="fa-regular fa-circle-dot" style="color: #000000;"></i>Employees</div>
                                 </h3>
                             </div>
-                            <a href="#">
+                            <a href="ShopsDashboard">
                                 <span>Go to Dashboard</span>
                                 <span class="icon-button">
                                     <i class="ph-caret-right-bold"></i>

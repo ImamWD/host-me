@@ -5,6 +5,8 @@ use Illuminate\Support\Facades\Route;
 use App\Http\Controllers\API\loginController;
 use App\Http\Controllers\API\usersController;
 use App\Http\Controllers\API\categoryController;
+use App\Http\Controllers\API\shopController;
+
 
 /*
 |--------------------------------------------------------------------------
@@ -26,3 +28,5 @@ Route::post('Usersinfo', [usersController::class, 'UsersInfo']);
 Route::post('deleteuser', [usersController::class, 'UsersDelete']);
 Route::post('addcategory', [categoryController::class, 'addcategory']);
 Route::post('categoryinfo', [categoryController::class, 'categoryinfo']);
+Route::post('shopsinfo', [shopController::class, 'getallShops']);
+Route::post('addShop', [shopController::class, 'addShop']);

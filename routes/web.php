@@ -51,3 +51,10 @@ Route::get('/HomeDashboard', function () {
 Route::get('/CategoryDashboard', function () {
     return view('cruds.category.categorycrud');
 });
+Route::get('/ShopsDashboard', function () {
+    return view('cruds.shops.shopscrud');
+});
+
+Route::get('/myShop', function () {
+    return view('cruds.shops.shophome');
+});

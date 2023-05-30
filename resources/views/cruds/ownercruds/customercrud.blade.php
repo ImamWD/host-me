@@ -67,7 +67,7 @@
                 <path d="M21 12.79A9 9 0 1111.21 3 7 7 0 0021 12.79z"></path>
               </svg>
             </button>
-            <button onclick="addemployee()" class="app-content-headerButton">Add Employee</button>
+            <button onclick="addemployee()" class="app-content-headerButton">Add Customer</button>
           </div>
           <div class="app-content-actions">
             <input class="search-bar" placeholder="Search..." type="text">

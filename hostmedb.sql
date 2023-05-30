@@ -3,7 +3,7 @@
 -- https://www.phpmyadmin.net/
 --
 -- Host: 127.0.0.1
--- Generation Time: May 27, 2023 at 09:42 AM
+-- Generation Time: May 30, 2023 at 11:53 AM
 -- Server version: 10.4.24-MariaDB
 -- PHP Version: 8.1.6
 
@@ -76,10 +76,10 @@ INSERT INTO `categories` (`id`, `name`, `imageurl`, `created_at`, `updated_at`) 
 -- --------------------------------------------------------
 
 --
--- Table structure for table `categorycustomer`
+-- Table structure for table `categorycustomers`
 --
 
-CREATE TABLE `categorycustomer` (
+CREATE TABLE `categorycustomers` (
   `id` int(11) NOT NULL,
   `customer_id` int(11) DEFAULT NULL,
   `cat_id` int(11) DEFAULT NULL
@@ -100,14 +100,27 @@ CREATE TABLE `categoryproduct` (
 -- --------------------------------------------------------
 
 --
--- Table structure for table `categoryshop`
+-- Table structure for table `categoryshops`
 --
 
-CREATE TABLE `categoryshop` (
+CREATE TABLE `categoryshops` (
   `id` int(11) NOT NULL,
   `shop_id` int(11) DEFAULT NULL,
-  `cat_id` int(11) DEFAULT NULL
+  `cat_id` int(11) DEFAULT NULL,
+  `created_at` date DEFAULT NULL,
+  `updated_at` date DEFAULT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
+
+--
+-- Dumping data for table `categoryshops`
+--
+
+INSERT INTO `categoryshops` (`id`, `shop_id`, `cat_id`, `created_at`, `updated_at`) VALUES
+(1, 11, 11, NULL, NULL),
+(2, 13, 6, NULL, NULL),
+(3, 12, 8, NULL, NULL),
+(4, 10, 8, NULL, NULL),
+(5, 14, 7, '2023-05-29', '2023-05-29');
 
 -- --------------------------------------------------------
 
@@ -328,7 +341,11 @@ CREATE TABLE `shops` (
 --
 
 INSERT INTO `shops` (`id`, `Name`, `logourl`, `location`, `created`, `sub_id`, `created_at`, `updated_at`) VALUES
-(1, 'KldCompany', NULL, 'Nablus', '2023-05-01', 111, NULL, NULL);
+(10, 'Pen Tool', '/storage/shopImages/CagK1RUhJAY1Fg5y1AIG5CRI5I3RLq2ADe5WzFGa.png', 'Nablus', NULL, 111, '2023-05-27', '2023-05-27'),
+(11, 'Brand', '/storage/shopImages/sMSGuWp9CbAaLJzQc0klvEecrKEuKlmITIqOj7Wy.jpg', 'Tulkarm', NULL, 111, '2023-05-27', '2023-05-27'),
+(12, 'Lunch Time', '/storage/shopImages/q5iEtbvAnTEB4ua6iq2OjtUWNTql0YHkUm97lyTu.jpg', 'Nablus', NULL, 113, '2023-05-27', '2023-05-27'),
+(13, 'Elctronic', '/storage/shopImages/3qB40LDIt1a9hkFzvhxBHos8BdyTzh9ySk8ccuDP.jpg', 'Tulkarm', NULL, 113, '2023-05-27', '2023-05-27'),
+(14, 'Jjj', '/storage/shopImages/mjJMYsCVLKpVfDkF5eAFHEicup5aU3vnVzUwPd8T.jpg', 'Ewds', NULL, 111, '2023-05-29', '2023-05-29');
 
 -- --------------------------------------------------------
 
@@ -346,7 +363,8 @@ CREATE TABLE `subscribers` (
 --
 
 INSERT INTO `subscribers` (`ssn`, `budget`) VALUES
-(111, 3500);
+(111, 3500),
+(113, 0);
 
 -- --------------------------------------------------------
 
@@ -365,8 +383,7 @@ CREATE TABLE `s_employees` (
 --
 
 INSERT INTO `s_employees` (`ssn`, `s_ssn`, `access_s`) VALUES
-(113, 111, 'advs'),
-(114, 111, NULL);
+(117, 111, NULL);
 
 -- --------------------------------------------------------
 
@@ -393,16 +410,17 @@ CREATE TABLE `users` (
 --
 
 INSERT INTO `users` (`ssn`, `Name`, `active`, `Email`, `passW`, `api_token`, `Phone`, `Location`, `imageurl`, `updated_at`, `created_at`) VALUES
-(106, 'Rami', 1, 'Rami123@gmail.com', 'Rami12345#', NULL, NULL, 'palestine', '/storage/userImages/QeJab0GHPycIxsRXPQOH13EyuNYPahI4ORksfSL9.jpg', '2023-05-20 14:37:26', '2023-05-20 14:37:26'),
-(108, 'Imam Ibrahim', 1, 'imammosa537@gmail.com', 'Imam1234', '5CTk7NTrxdW9iH737eXi0GLqhTnk4PoHOCJ8HBpsuEaeisu7SGySEN4NFF4vJz8Z4VB422GERHzMLAzm', '0569402015', 'Tulkarm', '/storage/userImages/GWD0N6zLNrjMNajHa1QkfjJY10vkE19lkohZsXo9.jpg', '2023-05-20 14:45:04', '2023-05-20 14:45:04'),
-(109, 'Sama', 1, 'Sama@gmail.com', 'Sama1234', NULL, '0569443322', 'Nablus', '/storage/userImages/nxqXFYrcKrOnYSkAVNJgwUQ8C5lGwscpcVyq5dMJ.jpg', '2023-05-20 14:47:36', '2023-05-20 14:47:36'),
-(110, 'Sami', 1, 'Sami@gmail.com', 'Sami1234', NULL, NULL, 'Nablus', '/storage/userImages/P2sKlDMVmhP9VW5eVLJHciIitNujYGhrcciMzEv2.jpg', '2023-05-20 15:23:06', '2023-05-20 15:23:06'),
+(106, 'Rami', 0, 'Rami123@gmail.com', 'Rami12345#', NULL, NULL, 'palestine', '/storage/userImages/QeJab0GHPycIxsRXPQOH13EyuNYPahI4ORksfSL9.jpg', '2023-05-20 14:37:26', '2023-05-20 14:37:26'),
+(108, 'Imam Ibrahim', 1, 'imammosa537@gmail.com', 'Imam1234', 'x5Td5ZDQ3MfZxR5uzwa5wGiz17bbdybJP3FWkEvp5cGuARSpf2OJTXEPegvKExuq172ZI2LXFhx56CEx', '0569402015', 'Tulkarm', '/storage/userImages/GWD0N6zLNrjMNajHa1QkfjJY10vkE19lkohZsXo9.jpg', '2023-05-20 14:45:04', '2023-05-20 14:45:04'),
+(109, 'Sama', 0, 'Sama@gmail.com', 'Sama1234', NULL, '0569443322', 'Nablus', '/storage/userImages/nxqXFYrcKrOnYSkAVNJgwUQ8C5lGwscpcVyq5dMJ.jpg', '2023-05-20 14:47:36', '2023-05-20 14:47:36'),
+(110, 'Sami', 1, 'Sami@gmail.com', 'Sami1234', 'AAAAAAAAAAAAAAAAAAAAA', NULL, 'Nablus', '/storage/userImages/P2sKlDMVmhP9VW5eVLJHciIitNujYGhrcciMzEv2.jpg', '2023-05-20 15:23:06', '2023-05-20 15:23:06'),
 (111, 'Khalid', 1, 'Kk@gmail.com', 'Kkkk1111', NULL, NULL, NULL, '/storage/userImages/QGavuz8iFvwhiikdynYZ6x6Ty1vhLNcYDScGCtGT.jpg', '2023-05-20 15:44:56', '2023-05-20 15:44:56'),
 (112, 'Empw', 1, 'Ees@gmail.com', 'Eeee1111', NULL, NULL, NULL, '/storage/userImages/lftuIYsqe8GzWdwXoFDEadK7nI36o5VzoZZGZzhf.jpg', '2023-05-20 16:28:39', '2023-05-20 16:28:39'),
 (113, 'Qwsa', 1, 'Erw@gmail.com', 'WWww1111', NULL, NULL, NULL, '/storage/userImages/3jdrnLY5UUWhWXuMblO6uagdDJdzjykdnG6RBg81.jpg', '2023-05-20 16:29:36', '2023-05-20 16:29:36'),
 (114, 'Yuuu', 1, 'Yy@gmail.com', 'Yyyy1234', NULL, '0569402015', 'nablus', '/storage/userImages/KPgof6rREH4PDebsbAeIYfpYBeVhN1YLCnEeDZrN.jpg', '2023-05-20 16:40:46', '2023-05-20 16:40:46'),
 (115, 'Yaser', 1, 'YAs@gmail.com', 'Yyyy1111', NULL, '0569843276', 'nablus', '/storage/userImages/nnJzlEdGfe4VYcrOB7edCfdrotkBz2nRMJ0hfqtD.jpg', '2023-05-20 17:04:26', '2023-05-20 17:04:26'),
-(116, 'Sam', 1, 'Sam@gmail.com', 'Sam3333#', NULL, '0569404321', 'DD', '/storage/userImages/IdeGSNjp0DNMek2MTjjukB6vPUlKukFKBBArqvpH.jpg', '2023-05-20 17:07:34', '2023-05-20 17:07:34');
+(116, 'Sam', 1, 'Sam@gmail.com', 'Sam3333#', NULL, '0569404321', 'DD', '/storage/userImages/IdeGSNjp0DNMek2MTjjukB6vPUlKukFKBBArqvpH.jpg', '2023-05-20 17:07:34', '2023-05-20 17:07:34'),
+(117, 'Dani', 1, 'D1d@gmail.com', 'Dddd123456#', NULL, NULL, NULL, '/storage/userImages/3mQ4uJEoBhBFViL0YIppBEE4CXwYvh5fUcW9pERn.jpg', '2023-05-27 12:01:56', '2023-05-27 12:01:56');
 
 -- --------------------------------------------------------
 
@@ -443,9 +461,9 @@ ALTER TABLE `categories`
   ADD PRIMARY KEY (`id`);
 
 --
--- Indexes for table `categorycustomer`
+-- Indexes for table `categorycustomers`
 --
-ALTER TABLE `categorycustomer`
+ALTER TABLE `categorycustomers`
   ADD PRIMARY KEY (`id`),
   ADD KEY `customer_id` (`customer_id`),
   ADD KEY `cat_id` (`cat_id`);
@@ -459,9 +477,9 @@ ALTER TABLE `categoryproduct`
   ADD KEY `cat_id` (`cat_id`);
 
 --
--- Indexes for table `categoryshop`
+-- Indexes for table `categoryshops`
 --
-ALTER TABLE `categoryshop`
+ALTER TABLE `categoryshops`
   ADD PRIMARY KEY (`id`),
   ADD KEY `shop_id` (`shop_id`),
   ADD KEY `cat_id` (`cat_id`);
@@ -607,9 +625,9 @@ ALTER TABLE `categories`
   MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=12;
 
 --
--- AUTO_INCREMENT for table `categorycustomer`
+-- AUTO_INCREMENT for table `categorycustomers`
 --
-ALTER TABLE `categorycustomer`
+ALTER TABLE `categorycustomers`
   MODIFY `id` int(11) NOT NULL AUTO_INCREMENT;
 
 --
@@ -619,10 +637,10 @@ ALTER TABLE `categoryproduct`
   MODIFY `id` int(11) NOT NULL AUTO_INCREMENT;
 
 --
--- AUTO_INCREMENT for table `categoryshop`
+-- AUTO_INCREMENT for table `categoryshops`
 --
-ALTER TABLE `categoryshop`
-  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT;
+ALTER TABLE `categoryshops`
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=6;
 
 --
 -- AUTO_INCREMENT for table `migrations`
@@ -676,13 +694,13 @@ ALTER TABLE `shopfeedback`
 -- AUTO_INCREMENT for table `shops`
 --
 ALTER TABLE `shops`
-  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=2;
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=15;
 
 --
 -- AUTO_INCREMENT for table `users`
 --
 ALTER TABLE `users`
-  MODIFY `ssn` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=117;
+  MODIFY `ssn` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=118;
 
 --
 -- AUTO_INCREMENT for table `wishlist`
@@ -708,11 +726,11 @@ ALTER TABLE `cart`
   ADD CONSTRAINT `cart_ibfk_2` FOREIGN KEY (`customer_id`) REFERENCES `customers` (`ssn`) ON DELETE CASCADE;
 
 --
--- Constraints for table `categorycustomer`
+-- Constraints for table `categorycustomers`
 --
-ALTER TABLE `categorycustomer`
-  ADD CONSTRAINT `categorycustomer_ibfk_1` FOREIGN KEY (`customer_id`) REFERENCES `customers` (`ssn`) ON DELETE CASCADE,
-  ADD CONSTRAINT `categorycustomer_ibfk_2` FOREIGN KEY (`cat_id`) REFERENCES `categories` (`id`) ON DELETE CASCADE;
+ALTER TABLE `categorycustomers`
+  ADD CONSTRAINT `categorycustomers_ibfk_1` FOREIGN KEY (`customer_id`) REFERENCES `customers` (`ssn`) ON DELETE CASCADE,
+  ADD CONSTRAINT `categorycustomers_ibfk_2` FOREIGN KEY (`cat_id`) REFERENCES `categories` (`id`) ON DELETE CASCADE;
 
 --
 -- Constraints for table `categoryproduct`
@@ -722,11 +740,11 @@ ALTER TABLE `categoryproduct`
   ADD CONSTRAINT `categoryproduct_ibfk_2` FOREIGN KEY (`cat_id`) REFERENCES `categories` (`id`) ON DELETE CASCADE;
 
 --
--- Constraints for table `categoryshop`
+-- Constraints for table `categoryshops`
 --
-ALTER TABLE `categoryshop`
-  ADD CONSTRAINT `categoryshop_ibfk_1` FOREIGN KEY (`shop_id`) REFERENCES `shops` (`id`) ON DELETE CASCADE,
-  ADD CONSTRAINT `categoryshop_ibfk_2` FOREIGN KEY (`cat_id`) REFERENCES `categories` (`id`) ON DELETE CASCADE;
+ALTER TABLE `categoryshops`
+  ADD CONSTRAINT `categoryshops_ibfk_1` FOREIGN KEY (`shop_id`) REFERENCES `shops` (`id`) ON DELETE CASCADE,
+  ADD CONSTRAINT `categoryshops_ibfk_2` FOREIGN KEY (`cat_id`) REFERENCES `categories` (`id`) ON DELETE CASCADE;
 
 --
 -- Constraints for table `customers`
