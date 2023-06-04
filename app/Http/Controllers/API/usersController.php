@@ -168,6 +168,8 @@ class usersController extends Controller
             if($users)
             {
                 user::where('SSN', '=', $request->ssn)->delete();
+                return response()->json(['success' => "deleted"],205);
+
             }
             else
             {

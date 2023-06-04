@@ -95,7 +95,7 @@ function showdata(data)
         `
       }
       str += `
-      <div class="products-row" style="overflow:auto;">
+      <div onclick="openshop(${data[key]['id']})" class="products-row" style="overflow:auto;">
       `
       +image+
       `    
@@ -114,7 +114,11 @@ function showdata(data)
     }
    items.innerHTML += str; 
 }
-
+function openshop(ID)
+{
+  localStorage.setItem('shopId', ID);
+  window.location.href='/myShop';
+}
 function allsubsapi()
 {
     const formData = new FormData();

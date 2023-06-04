@@ -18,15 +18,15 @@ a:hover::after {
 }
 
 ::-webkit-scrollbar-track {
-  background: MediumSpringGreen;
+  background: #16a085;
 }
 
 ::-webkit-scrollbar-thumb {
-  background: MediumSeaGreen;
+  background: #16a085;
 }
 
 ::-webkit-scrollbar-thumb:hover {
-  background: SeaGreen;
+  background: #16a085;
 }
 
 body,
@@ -48,7 +48,7 @@ body {
   justify-content: center;
   height: 100vh;
   overflow: hidden;
-  background: MediumSpringGreen;
+  background: #FFFFFF;
   margin: 0;
   padding: 0;
 }
@@ -72,7 +72,7 @@ body {
   width: 95%;
   height: 90%;
   background: white;
-  box-shadow: 0 20px 40px 0 SeaGreen, inset 0px -10px 17px 1px MediumSeaGreen;
+  box-shadow: 0 20px 40px 0 #585e5c, inset 0px -10px 17px 1px #939c9a;
   overflow: hidden;
   border-radius: 25px;
   z-index: 998;
@@ -126,8 +126,7 @@ body {
   width: 40px;
   height: 40px;
   border-radius: 100px;
-  background: MediumSpringGreen;
-  box-shadow: 0 5px 15px 0 SeaGreen, inset 0px -6px 12px 0px SeaGreen;
+ 
   transition: all 0.4s ease-in-out;
 }
 
@@ -135,7 +134,7 @@ body {
   fill: white;
   width: 70%;
   height: 70%;
-  filter: drop-shadow(1px 1px 0px SeaGreen);
+  filter: drop-shadow(1px 1px 0px #16a085);
   transition: all 0.4s ease-in-out;
 }
 
@@ -145,7 +144,7 @@ body {
   margin: 0;
   margin-left: 12px;
   padding: 0;
-  color: SeaGreen;
+  color: #16a085;
   transition: all 0.4s ease-in-out;
 }
 
@@ -174,7 +173,7 @@ body {
   width: 100%;
   height: 50px;
   border-radius: 12px;
-  box-shadow: 0 10px 20px 0 #3cb37177, inset 0px -4px 8px 0 SeaGreen;
+  box-shadow: 0 10px 20px 0 #757a7777, inset 0px -4px 8px 0 #9b9b9b;
   border: none !important;
   padding: 0px 20px 5px 20px;
 }
@@ -185,11 +184,11 @@ body {
   bottom: 38%;
   width: 18px;
   height: auto;
-  fill: SeaGreen;
+  fill: #16a085;
 }
 
 .search input:focus {
-  outline: 1px solid MediumSpringGreen;
+  outline: 1px solid #16a085;
 }
 
 .profile {
@@ -218,7 +217,7 @@ body {
 .profile > svg:hover,
 .profile-small > svg:hover {
   cursor: pointer;
-  fill: MediumSpringGreen;
+  fill: #16a085;
 }
 
 .profile > svg:active,
@@ -230,7 +229,6 @@ body {
   width: 50px;
   height: 50px;
   border-radius: 200px;
-  background: url("https://picsum.photos/id/440/60/60");
   background-position: center;
   background-size: cover;
 }
@@ -272,10 +270,10 @@ body {
   justify-content: center;
   width: 45px;
   height: 45px;
-  background: MediumSpringGreen;
+  background: #16a085;
   border-radius: 10px;
   margin-bottom: 25px;
-  box-shadow: 0 7px 14px 0 #3cb37199, inset 0px -5px 7px 0px MediumSeaGreen;
+  box-shadow: 0 7px 14px 0 #3cb37199, inset 0px -5px 7px 0px #16a085;
 }
 
 .left-sidebar > div:last-of-type {
@@ -285,12 +283,12 @@ body {
 .left-sidebar > div:hover {
   cursor: pointer;
   transform: translateY(-3px);
-  box-shadow: 0 10px 16px 0 #3cb371dd, inset 0px -5px 9px 0px MediumSeaGreen;
-  border: 1px solid MediumSpringGreen;
+  box-shadow: 0 10px 16px 0 #3cb371dd, inset 0px -5px 9px 0px #16a085;
+  border: 1px solid #16a085;
 }
 
 .left-sidebar > div > svg {
-  fill: SeaGreen;
+  fill: #16a085;
   width: 25px;
   height: auto;
 }
@@ -347,7 +345,7 @@ body {
   left: 0;
   width: 100%;
   height: 15px;
-  background: SpringGreen;
+  background: #16a085;
   content: "";
   z-index: -1;
 }
@@ -373,14 +371,14 @@ body {
   justify-content: center;
   width: 27%;
   height: 100%;
-  background: MediumSpringGreen;
-  box-shadow: 0 10px 20px 0 #3cb37177, inset 0px -7px 12px 1px MediumSeaGreen;
+  background: #16a085;
+
   border-radius: 20px;
   transition: all 0.4s ease-in-out;
 }
 
 .clay-category svg {
-  fill: SeaGreen;
+  fill: #16a085;
   width: 30px;
   height: auto;
   margin-right: 10px;
@@ -427,7 +425,7 @@ body {
 .clay-category:hover {
   cursor: pointer;
   transform: translateX(-15px);
-  background: SeaGreen !important;
+  background: #16a085 !important;
   transition: all 0.4s ease-in-out;
 }
 
@@ -436,13 +434,13 @@ body {
 }
 
 .clay-category:hover > svg {
-  fill: MediumSpringGreen;
+  fill: #16a085;
   transition: all 0.4s ease-in-out;
 }
 
 .clay-category:hover > p {
   color: white;
-  text-decoration: 2px dotted underline MediumSpringGreen;
+  text-decoration: 2px dotted underline #16a085;
   transition: all 0.4s ease-in-out;
 }
 
@@ -453,8 +451,8 @@ body {
   justify-content: center;
   position: relative;
   width: 100%;
-  height: 200px;
-  background: url("https://picsum.photos/id/622/1920/1080");
+  height: 500px;
+ 
   background-size: 100%;
   background-position: center;
   background-attachment: scroll;
@@ -477,13 +475,13 @@ body {
 }
 
 .large-banner h2 {
-  color: white;
+  color: rgb(114, 114, 114);
   font-size: 30pt;
   margin: 0;
   padding: 0;
   line-height: 30pt;
   margin-bottom: 10px;
-  text-shadow: 1px 1px 0px SeaGreen, 2px 2px 0px SeaGreen;
+  text-shadow: 1px 1px 0px #000000, 2px 2px 0px #000000;
 }
 
 .large-banner a {
@@ -499,7 +497,7 @@ body {
   color: dimgray;
   border-radius: 12px;
   overflow: hidden;
-  box-shadow: 0 10px 20px 0 #000000bb, inset 0px -5px 10px 1px SeaGreen;
+  box-shadow: 0 10px 20px 0 #000000bb, inset 0px -5px 10px 1px #a3a3a3;
 }
 
 .large-banner a::after {
@@ -509,9 +507,9 @@ body {
   width: 100%;
   height: 100%;
   content: "";
-  background: MediumSpringGreen;
+  background: #16a085;
   border-radius: 12px;
-  box-shadow: 0 10px 20px 0 #000000bb, inset 0px -5px 10px 1px SeaGreen;
+  box-shadow: 0 10px 20px 0 #000000bb, inset 0px -5px 10px 1px #16a085;
   opacity: 0;
   z-index: -1;
 }
@@ -536,7 +534,7 @@ body {
   left: 0;
   width: 100%;
   height: 100%;
-  background: linear-gradient(135deg, SpringGreen, SeaGreen);
+  background: linear-gradient(135deg, #616161, #616161);
   content: "";
   border-radius: 20px;
   mix-blend-mode: soft-light;
@@ -579,7 +577,7 @@ body {
   display: flex;
   flex-direction: row;
   align-items: center;
-  justify-content: space-between;
+  justify-content: space-around;
   flex-wrap: wrap;
   width: 100%;
   height: auto;
@@ -598,7 +596,7 @@ body {
   padding: 30px 20px;
   margin-top: 25px;
   border-radius: 20px;
-  box-shadow: 0 10px 20px 0 #3cb37177, inset 0px -7px 12px 1px MediumSeaGreen;
+  box-shadow: 0 10px 20px 0 #3cb37177, inset 0px -7px 12px 1px #16a085;
   transition: all 0.4s ease-in-out;
 }
 
@@ -626,36 +624,19 @@ body {
   all: unset;
   width: 40%;
   height: 250px;
-  background: url("https://picsum.photos/id/400/600/600");
+ 
+
   background-size: cover;
   background-position: center;
   background-repeat: no-repeat;
   border-radius: 12px;
 }
 
-.featured-clay > div:nth-child(2) > div:nth-child(1) {
-  background: url("https://picsum.photos/id/402/600/600");
-}
 
-.featured-clay > div:nth-child(3) > div:nth-child(1) {
-  background: url("https://picsum.photos/id/443/600/600");
-}
-
-.featured-clay > div:nth-child(4) > div:nth-child(1) {
-  background: url("https://picsum.photos/id/404/600/600");
-}
-
-.featured-clay > div:nth-child(5) > div:nth-child(1) {
-  background: url("https://picsum.photos/id/405/600/600");
-}
-
-.featured-clay > div:nth-child(6) > div:nth-child(1) {
-  background: url("https://picsum.photos/id/408/600/600");
-}
 
 .featured-clay > div:hover {
   animation: glow 10s linear infinite;
-  box-shadow: 0 17px 45px 0 #3cb371, inset 0px -7px 12px 1px MediumSeaGreen;
+  box-shadow: 0 17px 45px 0 #3cb371, inset 0px -7px 12px 1px #16a085;
   cursor: pointer;
   transform: translateY(-10px);
   transition: all 0.4s ease-in-out;
@@ -748,7 +729,7 @@ body {
   width: 50%;
   margin-left: 20px;
   padding-left: 20px;
-  border-left: 1px solid SeaGreen;
+  border-left: 1px solid #16a085;
 }
 
 .featured-clay > div > div:nth-child(2) > h3,
@@ -761,7 +742,7 @@ body {
 
 .featured-clay > div > div:nth-child(2) > h3 {
   font-size: 18pt;
-  color: SeaGreen;
+  color: #16a085;
   line-height: 26pt;
   position: relative;
   width: auto;
@@ -776,7 +757,7 @@ body {
   height: 15px;
   background: white;
   content: "";
-  border-bottom: 2px dotted SpringGreen;
+  border-bottom: 2px dotted #16a085;
   z-index: -1;
 }
 
@@ -788,7 +769,7 @@ body {
 }
 
 .featured-clay > div > div:nth-child(2) > a {
-  background: SeaGreen;
+  background: #16a085;
   color: white;
   margin-top: 10px;
   width: 100px;
@@ -807,7 +788,7 @@ body {
 }
 
 .featured-clay > div > div:nth-child(2) > a:active {
-  border: 1px solid DarkSeaGreen;
+  border: 1px solid Dark#16a085;
 }
 
 .featured-users {
@@ -842,7 +823,7 @@ body {
   width: 30%;
   height: auto;
   margin: 0px 20px;
-  border-left: 3px solid MediumSpringGreen;
+  border-left: 3px solid #16a085;
   padding-left: 30px;
   left: 10px;
 }
@@ -854,7 +835,7 @@ body {
   width: 300px;
   height: 300px;
   border-radius: 300px;
-  background: MediumSpringGreen;
+  background: #16a085;
   content: "";
   z-index: -1;
 }
@@ -876,7 +857,7 @@ body {
   background-size: cover;
   background-position: center;
   background-repeat: no-repeat;
-  border: 1px solid MediumSpringGreen;
+  border: 1px solid #16a085;
 }
 
 .featured-users > div:nth-child(2) > div:nth-child(1) > div:nth-child(1) {
@@ -908,7 +889,7 @@ body {
 
 .featured-users > div > div:nth-child(1) > div:nth-child(2) > h3:hover {
   transform: translateX(8px);
-  color: SeaGreen;
+  color: #16a085;
   cursor: pointer;
   transition: all 0.4s ease-in-out;
 }
@@ -952,7 +933,7 @@ body {
 .featured-users > div > div:nth-child(2)::after {
   position: absolute;
   right: 30%;
-  background: SeaGreen;
+  background: #16a085;
   color: white;
   content: "CATEGORIES";
   width: 100px;
@@ -966,7 +947,7 @@ body {
 }
 
 .clay-category:nth-child(2) {
-  background: SpringGreen;
+  background: #16a085;
   order: 1;
 }
 
@@ -991,8 +972,8 @@ body {
 .featured-users > div > div:nth-child(2) > div:hover {
   cursor: pointer;
   transform: translateY(-3px);
-  box-shadow: 0 10px 16px 0 #3cb371dd, inset 0px -5px 9px 0px MediumSeaGreen;
-  border: 1px solid MediumSpringGreen;
+  box-shadow: 0 10px 16px 0 #3cb371dd, inset 0px -5px 9px 0px #16a085;
+  border: 1px solid #16a085;
 }
 
 .featured-users > div > div:nth-child(2) > div:active {
@@ -1064,8 +1045,8 @@ body {
     justify-content: space-evenly;
     top: 0px;
     padding: 20px 0px;
-    box-shadow: 0 10px 20px 0 #2e8b57aa, inset 0px -7px 9px 0px SeaGreen;
-    border: 1px solid MediumSpringGreen;
+    box-shadow: 0 10px 20px 0 #2e8b57aa, inset 0px -7px 9px 0px #16a085;
+    border: 1px solid #16a085;
   }
   .left-sidebar > div,
   .left-sidebar > div:last-of-type {
@@ -1087,7 +1068,7 @@ body {
     width: 300px;
     height: 300px;
     border-radius: 300px;
-    background: MediumSpringGreen;
+    background: #16a085;
     content: "";
     z-index: -1;
   }

@@ -148,7 +148,11 @@ class  loginController extends Controller
                 }
                 elseif($request->type == 2)//subscriper
                 {
-
+                    $subscriber = new subscriber;
+                    $subscriber->ssn = $userSsn;
+                    $subscriber->budget = $request->budget;
+                    $subscriber->save();
+                        return response()->json(['signup'=>"success"],200);   
                 }
                 elseif($request->type == 3)//s-employee
                 {

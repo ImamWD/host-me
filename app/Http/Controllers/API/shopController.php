@@ -88,5 +88,39 @@ class shopController extends Controller
                 return response()->json(['Error'=>"Key Error"],405);   
             }
     }
-
+    public function oneshop(Request $request)
+    {
+        
+        if($request->has('Auth') && $request->Auth != NULL)
+            {
+                $users = user::where('api_token',"=" , $request->Auth)->value('ssn');
+                if($users)
+                {
+                    if($request->has('Sid') && $request->Sid != NULL)
+                    {
+                        $RES = DB::table('shops')->
+                        select('shops.*','categories.imageurl as Cimage','categories.name as CNAME','users.name as UNAME','users.imageurl as UIMAGE')->
+                        join('categoryshops','categoryshops.shop_id','=','shops.id')->
+                        join('categories','categories.id','=','categoryshops.cat_id')->
+                        join('subscribers','subscribers.ssn','=','shops.sub_id')->
+                        join('users','users.ssn','=','subscribers.ssn')->
+                        where('shops.id','=',$request->Sid)->get();
+                        return response()->json($RES);
+                    }
+                    else
+                    {
+                        return response()->json(['Error'=>"No Sid"],204);   
+                    }
+                }
+                else
+                {
+                    return response()->json(['Error'=>"No Auth"],205);   
+                }
+            }
+            else
+            {
+                return response()->json(['Error'=>"Key Error"],405);   
+            }
+           
+    }
 }
