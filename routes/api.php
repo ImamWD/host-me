@@ -8,7 +8,10 @@ use App\Http\Controllers\API\categoryController;
 use App\Http\Controllers\API\shopController;
 use App\Http\Controllers\API\adsController;
 use App\Http\Controllers\API\productsController;
-
+use App\Http\Controllers\API\ordersController;
+use App\Http\Controllers\API\cartController;
+use App\Http\Controllers\API\wishlistController;
+use App\Http\Controllers\API\feedbackController;
 
 /*
 |--------------------------------------------------------------------------
@@ -44,8 +47,34 @@ Route::post('oneshopads', [adsController::class, 'oneshopads']);
 Route::post('oneadinfo', [adsController::class, 'oneadinfo']);
 Route::post('updateads', [adsController::class, 'updateads']);
 Route::post('deleteads', [adsController::class, 'deleteads']);
-
-// ---------------PRODUCTS AND CUSTOMERS PROCESS API ROUTE
+// ---------------PRODUCTS API ROUTE
 Route::post('addproduct', [productsController::class, 'addproduct']);
 Route::post('oneproductinfo', [productsController::class, 'oneproductinfo']);
 Route::post('AllProductsInfoFormOneShop', [productsController::class, 'AllProductsInfoFormOneShop']);
+Route::post('AllProductsRecoSys', [productsController::class, 'AllProductsRecoSys']);
+Route::post('AllProductsInfo', [productsController::class, 'AllProductsInfo']);
+Route::post('UpdateProduct', [productsController::class, 'UpdateProduct']);
+Route::post('DeleteProduct', [productsController::class, 'DeleteProduct']);
+Route::post('AllProductsInfoOfSameCategory', [productsController::class, 'AllProductsInfoOfSameCategory']);
+Route::post('AllCategoriesForOneShop', [productsController::class, 'AllCategoriesForOneShop']);
+Route::post('AllProductsInfoOfSameCategoryOneShop', [productsController::class, 'AllProductsInfoOfSameCategoryOneShop']);
+// ---------------ORDERS API ROUTE
+Route::post('AddNewOrder', [ordersController::class, 'AddNewOrder']);
+Route::post('AddNewProductToOrder', [ordersController::class, 'AddNewProductToOrder']);
+Route::post('AllOrdersInfoFromOneCustomer', [ordersController::class, 'AllOrdersInfoFromOneCustomer']);
+Route::post('AllProductsFromOneOrder', [ordersController::class, 'AllProductsFromOneOrder']);
+Route::post('AllOrdersInfoFromOneShop', [ordersController::class, 'AllOrdersInfoFromOneShop']);
+Route::post('AllProductsFromOneOrderOneShop', [ordersController::class, 'AllProductsFromOneOrderOneShop']);
+// ---------------CART API ROUTE
+Route::post('AddProductToCart', [cartController::class, 'AddProductToCart']);
+Route::post('RemoveProductinCart', [cartController::class, 'RemoveProductinCart']);
+Route::post('AllProductsInfoInCartToOneCustomer', [cartController::class, 'AllProductsInfoInCartToOneCustomer']);
+// ---------------WISHLIST API ROUTE
+Route::post('AddProductToWishlist', [wishlistController::class, 'AddProductToWishlist']);
+Route::post('RemoveProductinWishlist', [wishlistController::class, 'RemoveProductinWishlist']);
+Route::post('AllProductsInfoInWishlistToOneCustomer', [wishlistController::class, 'AllProductsInfoInWishlistToOneCustomer']);
+// ---------------FEEDBACK API ROUTE
+Route::post('Addshopfeedback', [feedbackController::class, 'Addshopfeedback']);
+Route::post('Addproductfeedback', [feedbackController::class, 'Addproductfeedback']);
+Route::post('productfeedbackinfo', [feedbackController::class, 'productfeedbackinfo']);
+Route::post('shopfeedbackinfo', [feedbackController::class, 'shopfeedbackinfo']);

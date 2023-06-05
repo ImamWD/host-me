@@ -72,11 +72,17 @@ class shopController extends Controller
                 
                 if($users)
                 {
-                    $shops = shop::join('users', 'users.ssn', '=','shops.sub_id')->
-                    join('categoryshops','categoryshops.shop_id','=','shops.id')->
-                    join('categories','categories.id','=','categoryshops.cat_id')->
-                    select('shops.*','users.Name as UNAME','categories.name as CNAME','categories.imageurl')->get();
-                    return response()->json($shops);
+                    $shops = DB::table('shops')->
+                        select(DB::raw('AVG(`Evaluation`) AS `AVGFEEDBACK`'),'shops.*','categories.imageurl as Cimage','categories.name as CNAME','users.name as UNAME','users.imageurl as UIMAGE')->
+                        join('categoryshops','categoryshops.shop_id','=','shops.id')->
+                        join('categories','categories.id','=','categoryshops.cat_id')->
+                        join('subscribers','subscribers.ssn','=','shops.sub_id')->
+                        join('users','users.ssn','=','subscribers.ssn')->
+                        join('shopfeedbacks','shopfeedbacks.shop_id','=','shops.id')->
+                        distinct()->
+                        groupBy('categories.imageurl','categories.name','users.name','users.imageurl',  'shops.id','shops.logourl','shops.location','shops.Name','shops.sub_id','shops.created_at','shops.updated_at')->
+                        get();
+                        return response()->json($shops);
                 }
                 else
                 {
@@ -99,11 +105,14 @@ class shopController extends Controller
                     if($request->has('Sid') && $request->Sid != NULL)
                     {
                         $RES = DB::table('shops')->
-                        select('shops.*','categories.imageurl as Cimage','categories.name as CNAME','users.name as UNAME','users.imageurl as UIMAGE')->
+                        select(DB::raw('AVG(`Evaluation`) AS `AVGFEEDBACK`'),'shops.*','categories.imageurl as Cimage','categories.name as CNAME','users.name as UNAME','users.imageurl as UIMAGE')->
                         join('categoryshops','categoryshops.shop_id','=','shops.id')->
                         join('categories','categories.id','=','categoryshops.cat_id')->
                         join('subscribers','subscribers.ssn','=','shops.sub_id')->
                         join('users','users.ssn','=','subscribers.ssn')->
+                        join('shopfeedbacks','shopfeedbacks.shop_id','=','shops.id')->
+                        distinct()->
+                        groupBy('categories.imageurl','categories.name','users.name','users.imageurl',  'shops.id','shops.logourl','shops.location','shops.Name','shops.sub_id','shops.created_at','shops.updated_at')->
                         where('shops.id','=',$request->Sid)->get();
                         return response()->json($RES);
                     }
