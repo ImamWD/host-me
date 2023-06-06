@@ -14,7 +14,10 @@ use Illuminate\Support\Facades\Storage;
 use App\Models\user;
 use App\Models\owner;
 use App\Models\shop;
+use App\Models\customer;
+
 use App\Models\categoryshop;
+use App\Models\shopfeedback;
 use DB;
 
 class shopController extends Controller
@@ -51,8 +54,16 @@ class shopController extends Controller
                     $cat->shop_id = $shop->id;
                     $cat->cat_id = $request->cat_id;
                     $cat->save(); 
-                    return response()->json(['add'=>"success"],200);   
 
+                    $CID=customer::select(DB::raw('max(`ssn`) AS `SSN`'))->get();
+                    $ID=json_decode($CID);
+                    $PF = new shopfeedback;
+                    $PF->shop_id = $shop->id;
+                    $PF->customer_id = $ID[0]->SSN;
+                    $PF->Evaluation = 0;
+                    $PF->save();
+
+                    return response()->json(['add'=>"success"],200);   
                 }
                 else
                 {
@@ -132,4 +143,22 @@ class shopController extends Controller
             }
            
     }
+    public function allshopsfromeoneowner(Request $request)
+    {
+       
+                $shops = DB::table('shops')->
+                    select(DB::raw('AVG(`Evaluation`) AS `AVGFEEDBACK`'),'shops.*','categories.imageurl as Cimage','categories.name as CNAME','users.name as UNAME','users.imageurl as UIMAGE')->
+                    join('categoryshops','categoryshops.shop_id','=','shops.id')->
+                    join('categories','categories.id','=','categoryshops.cat_id')->
+                    join('subscribers','subscribers.ssn','=','shops.sub_id')->
+                    join('users','users.ssn','=','subscribers.ssn')->
+                    join('shopfeedbacks','shopfeedbacks.shop_id','=','shops.id')->
+                    distinct()->
+                    groupBy('categories.imageurl','categories.name','users.name','users.imageurl',  'shops.id','shops.logourl','shops.location','shops.Name','shops.sub_id','shops.created_at','shops.updated_at')->
+                    where('shops.sub_id','=',$request->sub_id)->
+                    get();
+                    return response()->json($shops);
+           
+    }
+
 }

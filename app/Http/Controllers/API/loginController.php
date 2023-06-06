@@ -53,7 +53,7 @@ class  loginController extends Controller
                     $o_employees = o_employee::where('ssn', $users)->value('ssn');
                     if($o_employees != null)
                     {
-                        $user_type = "o-employee";
+                        $user_type = "o_employee";
                     }
                     else
                     {

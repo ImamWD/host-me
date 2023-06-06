@@ -20,6 +20,7 @@ use App\Http\Controllers\login;
 use App\Http\Controllers\home;
 
 Route::get('/signup',[login::class,'signup']);
+
 Route::get('/',[login::class,'login']);
 Auth::routes();
 
@@ -57,4 +58,18 @@ Route::get('/ShopsDashboard', function () {
 
 Route::get('/myShop', function () {
     return view('cruds.shops.shophome');
+});
+
+Route::get('/ShopProducts', function () {
+    return view('cruds.shops.shopproduct');
+});
+Route::get('/ShopEmployees', function () {
+    return view('cruds.shops.shopemployees');
+});
+
+Route::get('/ShopOrders', function () {
+    return view('cruds.shops.shoporders');
+});
+Route::get('/shoporderproducts', function () {
+    return view('cruds.shops.shoporderproducts');
 });

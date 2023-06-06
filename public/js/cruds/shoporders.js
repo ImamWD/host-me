@@ -28,11 +28,11 @@ document.querySelector(".jsFilter").addEventListener("click", function () {
   });
 //___________________________________ ADD NEW && show data for O-Employee Functions________________________
 // load users information api
-  function shopInfo() //signup api function
+  function userInfo() //signup api function
 {
     const formData = new FormData();
-    formData.append('Auth', localStorage.getItem('token'));
-    fetch('api/shopsinfo',
+    formData.append('shop_id', localStorage.getItem('shopId'));
+    fetch('api/AllOrdersInfoFromOneShop',
      {
         method: 'POST',
         body: formData
@@ -41,7 +41,7 @@ document.querySelector(".jsFilter").addEventListener("click", function () {
       .then(data => setinfo(data))
       .catch();    
 } 
-shopInfo();
+userInfo();
 function setinfo(data)
 {
   if(JSON.stringify(data.Error))
@@ -73,67 +73,30 @@ function showdata(data)
   let str = '';
   for (const key in data)
    {
-      let image ='';
-      let imageCat ='';
-
-      if(data[key]['logourl'] != null)
-      {
-        image =
-        `
-        <div class="product-cell image">
-        <img src="http://localhost:8000${data[key]['logourl']}" alt="product">
-        </div>
-        `
-      }
-      else
-      {
-        image =
-        `
-        <div class="product-cell image">
-        <img src="/images/crud/noimage.jpg" alt="product">
-        </div>
-        `
-      }
       str += `
-      <div onclick="openshop(${data[key]['id']})" class="products-row" style="overflow:auto;">
-      `
-      +image+
-      `    
-      <div class="product-cell sales"><span class="cell-label">Shop Name:</span><span style="overflow:auto; width:100px" >${data[key]['Name']}</span></div>  
-      <div class="product-cell sales"><span class="cell-label">Subscriber:</span><span style="overflow:auto; width:100px" >${data[key]['UNAME']}</span></div>
-      <div class="product-cell stock"><span class="cell-label">Location:</span><span style="overflow:auto; width:100px" >${data[key]['location']}</span></div>
-      <div class="product-cell stock"><span class="cell-label">Category:</span><span style="overflow:auto; width:100px" >${data[key]['CNAME']}</span></div>
-      <div class="product-cell price"><span class="cell-label">Created:</span><span style="overflow:auto; width:100px" >${data[key]['created_at']}</span></div>
-      <div class="product-cell price"><span class="cell-label">Updated:</span><span style="overflow:auto; width:100px" >${data[key]['updated_at']}</span></div>
+      <div class="products-row" style="overflow:auto;">
+         
+      <div class="product-cell sales"><span class="cell-label">Order name:</span><span style="overflow:auto; width:200px" >${data[key]['ONAME']}</span></div>  
+      <div class="product-cell sales"><span class="cell-label">Order customer:</span><span style="overflow:auto; width:100px" >${data[key]['CustomerName']}</span></div>  
+      <div class="product-cell sales"><span class="cell-label">Products count:</span><span style="overflow:auto; width:100px" >${data[key]['ProductsCount']}</span></div>  
+      
       <div  class="product-cell price"><span class="cell-label">Events:</span> <span style="width:150px; display: flex; justify-content: flex-end; " >
-      <button style="margin-right:1px" class="btn btn-success"><i class="fa-solid fa-file-pen" style="color: #ffffff;"></i></button>
-      <button class="btn btn-danger" ><i class="fa-solid fa-trash-can" style="color: #ffffff;"></i></button></span>
+      <button onclick="openPRS(${data[key]['Oid']},'${data[key]['ONAME']}')" style="margin-right:1px" class="btn btn-success"><i class="fa-solid fa-sort-down" style="color: #ffffff;"></i></button>
+      </span>
        </div>
     </div>
       `;
     }
    items.innerHTML += str; 
 }
-function openshop(ID)
+function openPRS(id,name)
 {
-  localStorage.setItem('shopId', ID);
-  window.location.href='/myShop';
+    localStorage.setItem('Oid', id);
+    localStorage.setItem('Oname', name);
+
+    window.location.href='/shoporderproducts';
 }
-function allsubsapi()
-{
-    const formData = new FormData();
-    formData.append('Auth', localStorage.getItem('token'));
-    formData.append('type',2);
-    fetch('api/Usersinfo',
-     {
-        method: 'POST',
-        body: formData
-    })
-      .then(response => response.json())
-      .then(data => allcategoryapi(data))
-      .catch();
-}
-function allcategoryapi(D1)
+function allcategoryapi()
 {
     const formData = new FormData();
     formData.append('Auth', localStorage.getItem('token'));
@@ -143,76 +106,61 @@ function allcategoryapi(D1)
         body: formData
     })
       .then(response => response.json())
-      .then(data => addShop(D1,data))
+      .then(data => addproduct(data))
       .catch();
 }
-async function addShop(data,data1)
+async function addproduct(data)
 {
     let htmlval ='';
     for (const key in data)
-   {
-    htmlval+=`<option value="${data[key]['ssn']}"> ${data[key]['Name']}</option>`;
-   }
-   let htmlval1 ='';
-  for (const key in data1)
-  {
-   htmlval1+=`<option value="${data1[key]['id']}">${data1[key]['name']}</option>`;
-  }
-
-
+    {
+        htmlval+=`<option value="${data[key]['id']}">${data[key]['name']}</option>`;
+    }
      await Swal.fire({
-        title: 'Add New Employee',
+        title: 'Add New Product',
         showCancelButton: false, 
         showConfirmButton: false ,
         html:  `
         <label style = "display:flex">
          <div style="width:100%">
-        <input placeholder="Shop Name" onkeyup="addValidation(this,1)"  type="text" id="shopname" class="form-control  swal2-input " style="width:80%"/>
+        <input placeholder="Name"   type="text" id="name" class="form-control  swal2-input " style="width:80%"/>
         </div>   
         </label>
             
           <label style = "display:flex">
           <div style="width:100%">     
-          <input placeholder="Location" onkeyup="addValidation(this,2)" type="text" id="location" class="form-control swal2-input" style="width:80%"/>
+          <input placeholder="Price"  type="text" id="price" class="form-control swal2-input" style="width:80%"/>
           </div> 
           </label>
+
+          <label style = "display:flex">
+         <div style="width:100%">     
+         <input placeholder="Discount"  type="text" id="discount" class="form-control swal2-input" style="width:80%"/>
+         </div> 
+         </label>
          
+         <label style = "display:flex">
+         <div style="width:100%">     
+         <input placeholder="Personal image(otional)" type="file" id="image" class="form-control swal2-input" style="width:80%"/>
+         </div> 
+         </label>
 
-       
-
-       <label style = "display:flex">
-       <div style="width:100%">     
-       <input placeholder="Personal image(otional)" type="file" id="image" class="form-control swal2-input" style="width:80%"/>
-       </div> 
-       </label>
-
-       <label style = "display:flex">
-       <div style="width:100%">    
-       Subscriber :
-       <select id="select">
+         <label style = "display:flex">
+         <div style="width:100%">    
+         Category :
+         <select id="select">
      
        `
        +htmlval+
        `
       
-       </select> 
-       </div> 
-       </label> 
+         </select> 
+         </div> 
+         </label> 
 
-       <label style = "display:flex">
-       <div style="width:100%">    
-       Category :
-       <select id="select1">
-     
-       `
-       +htmlval1+
-       `
-      
-       </select> 
-       </div> 
-       </label> 
-      
-       <button onclick="addApi()" id="js-btn" class="btn btn-danger disabled" style="width: 100px; margin-right: auto;  margin-left: auto; margin-top:40px;"/>
+         
+       
+       <button onclick="addApi()" id="js-btn" class="btn btn-danger " style="width: 100px; margin-right: auto;  margin-left: auto; margin-top:40px;"/>
        Add new
        </button>
                 
@@ -221,9 +169,13 @@ async function addShop(data,data1)
         
     })
 }
+
 let validArray=[];
 validArray[0] = 0;//name
-validArray[1] = 0;//Location
+validArray[1] = 0;//email
+validArray[2] = 0;//password
+validArray[3] = 0;//configration
+
 function addValidation(OBJ,flag)
 {
 
@@ -246,9 +198,10 @@ function addValidation(OBJ,flag)
         }
         break;
       }
-      case 2: //Location
+      case 2: //Email
       {
-        if(OBJ.value.length >2 && OBJ.value.charAt(0)>='A' && OBJ.value.charAt(0)<='Z')
+        const emailRegex = /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
+        if(emailRegex.test(OBJ.value))
         {
           OBJ.classList.add('is-valid');
           OBJ.classList.remove('is-invalid');
@@ -260,6 +213,41 @@ function addValidation(OBJ,flag)
           OBJ.classList.add('is-invalid');
           validArray[1] =0;
         }
+
+        break;
+      }
+      case 3: //password
+      {
+        const passregex = /^(?=.*[a-z])(?=.*[A-Z])(?=.*\d).+$/;
+        if(passregex.test(OBJ.value))
+        {
+          OBJ.classList.add('is-valid');
+          OBJ.classList.remove('is-invalid');
+          validArray[2] =1;
+        }
+        else
+        {
+          OBJ.classList.remove('is-valid');
+          OBJ.classList.add('is-invalid');
+          validArray[2] =0;
+        }
+        break;
+      }
+      case 4: //configration password
+      {
+        let passdom = document.getElementById('password');
+        if(OBJ.value === passdom.value)
+        {
+          OBJ.classList.add('is-valid');
+          OBJ.classList.remove('is-invalid');
+          validArray[3] =1;
+        }
+        else
+        {
+          OBJ.classList.remove('is-valid');
+          OBJ.classList.add('is-invalid');
+          validArray[3] =0;
+        }
         break;
       }
   }
@@ -268,7 +256,7 @@ function addValidation(OBJ,flag)
 function activebtn()
 {
   let addbtn = document.getElementById('js-btn');
-  if(validArray[0] && validArray[1])
+  if(validArray[0] && validArray[1] && validArray[2] && validArray[3])
   {
     addbtn.classList.remove('disabled');
     addbtn.classList.remove('btn-danger');
@@ -282,28 +270,32 @@ function activebtn()
     addbtn.classList.remove('btn-success');
   }
 }
+
+
 function addApi()
 {
 // dom vars:
-let name = document.getElementById('shopname').value;
-let location = document.getElementById('location').value;
-let select = document.getElementById('select').value;
-let select1 = document.getElementById('select1').value;
-
+let name = document.getElementById('name').value;
+let price = document.getElementById('price').value;
+let discount = document.getElementById('discount').value;
 let image = document.getElementById('image');
+let select = document.getElementById('select').value;
+let description ="Adscvdrf";
 
    const formData = new FormData();
-    formData.append('name', name);
-    formData.append('location', location);
-    formData.append('sub_id', select);
-    formData.append('cat_id', select1);
-    formData.append('Auth', localStorage.getItem('token'));
+   formData.append('Auth', localStorage.getItem('token'));
+   formData.append('name', name);
+    formData.append('price', price);
+    formData.append('discount', discount);
+    formData.append('description', description);
+    formData.append('Sid',localStorage.getItem('shopId') );
+    formData.append('catid', select);
 
     if(image.files[0])
     {
       formData.append('image', image.files[0]);
     }
-    fetch('api/addShop',
+    fetch('api/addproduct',
      {
         method: 'POST',
         body: formData
@@ -336,7 +328,7 @@ function apiError(ERR)
       title: 'SUCCESS',
       text:'Signup is success',
     })
-    shopInfo();
+    userInfo();
   }
 
 
@@ -345,7 +337,7 @@ function apiError(ERR)
 function suredelete(id)
 {
   Swal.fire({
-    title: 'Do you want to delete this user ?',
+    title: 'Do you want to delete this Product ?',
     showDenyButton: true,
     showCancelButton: true,
     confirmButtonText: 'Delete',
@@ -368,8 +360,8 @@ function deleteApi(id)
   const formData = new FormData();
    
     formData.append('Auth',localStorage.getItem('token'));
-    formData.append('ssn', id);
-    fetch('api/deleteuser',
+    formData.append('id', id);
+    fetch('api/DeleteProduct',
      {
         method: 'POST',
         body: formData
@@ -377,4 +369,6 @@ function deleteApi(id)
       .then(response => response.json())
       .then()
       .catch();
+     
+
 }

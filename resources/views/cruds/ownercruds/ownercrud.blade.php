@@ -4,7 +4,7 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <meta http-equiv="X-UA-Compatible" content="ie=edge">
-    <title>Owner Dashboard</title>
+    <title>Admin Dashboard</title>
 
     <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0-alpha3/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-KK94CHFLLe+nY2dmCWGMq91rCGa5gtU4mk92HdvYe+M/SXH301p5ILy+dN9+nJOZ" crossorigin="anonymous">
     <link rel="stylesheet" href="/css/all.min.css">
@@ -28,25 +28,25 @@
             <li class="sidebar-list-item active">
               <a href="/OwnerDashboard">
                 <span>                        <i style="margin-right:5px" class="fa-solid fa-user" style="color: #969593;"></i>
-                  Owners</span>
+                  Admin</span>
               </a>
             </li>
             <li class="sidebar-list-item ">
               <a href="OwnerEmployeesDashboard">
                 <span>                        <i style="margin-right:5px" class="fa-solid fa-user" style="color: #969593;"></i>
-                  O Employees</span>
+                  Admin Employees</span>
               </a>
             </li>
             <li class="sidebar-list-item">
               <a href="/SubscriberDashboard">
                 <span>                        <i style="margin-right:5px" class="fa-solid fa-user" style="color: #969593;"></i>
-                  Subscribers</span>
+                  Business Owner</span>
               </a>
             </li>
             <li class="sidebar-list-item">
               <a href="SubscriberEmployeeDashboard">
                 <span>                        <i style="margin-right:5px" class="fa-solid fa-user" style="color: #969593;"></i>
-                  S Employees</span>
+                  Owner Employees</span>
               </a>
             </li>
             <li class="sidebar-list-item">
@@ -60,14 +60,14 @@
         </div>
         <div class="app-content" style="overflow:auto; width:100%">
           <div class="app-content-header">
-            <h1 class="app-content-headerText">Owner Dashboard</h1>
+            <h1 class="app-content-headerText">Admin Dashboard</h1>
             <button class="mode-switch" title="Switch Theme">
               <svg class="moon" fill="none" stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="2" width="24" height="24" viewBox="0 0 24 24">
                 <defs></defs>
                 <path d="M21 12.79A9 9 0 1111.21 3 7 7 0 0021 12.79z"></path>
               </svg>
             </button>
-            <button onclick="addemployee()" class="app-content-headerButton">Add Owner</button>
+            <button onclick="addemployee()" class="app-content-headerButton">Add Admin</button>
           </div>
           <div class="app-content-actions">
             <input class="search-bar" placeholder="Search..." type="text">

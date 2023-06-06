@@ -28,25 +28,25 @@
             <li class="sidebar-list-item ">
               <a href="/OwnerDashboard">
                 <span>                        <i style="margin-right:5px" class="fa-solid fa-user" style="color: #969593;"></i>
-                  Owners</span>
+                  Admin</span>
               </a>
             </li>
             <li class="sidebar-list-item ">
               <a href="OwnerEmployeesDashboard">
                 <span>                        <i style="margin-right:5px" class="fa-solid fa-user" style="color: #969593;"></i>
-                  O Employees</span>
+                  Admin Employees</span>
               </a>
             </li>
             <li class="sidebar-list-item">
               <a href="/SubscriberDashboard">
                 <span>                        <i style="margin-right:5px" class="fa-solid fa-user" style="color: #969593;"></i>
-                  Subscribers</span>
+                  Business Owner</span>
               </a>
             </li>
             <li class="sidebar-list-item">
               <a href="SubscriberEmployeeDashboard">
                 <span>                        <i style="margin-right:5px" class="fa-solid fa-user" style="color: #969593;"></i>
-                  S Employees</span>
+                  Owner Employees</span>
               </a>
             </li>
             <li class="sidebar-list-item active">

@@ -40,6 +40,8 @@ Route::post('categoryinfo', [categoryController::class, 'categoryinfo']);
 Route::post('shopsinfo', [shopController::class, 'getallShops']);
 Route::post('addShop', [shopController::class, 'addShop']);
 Route::post('oneshop', [shopController::class, 'oneshop']);
+Route::post('allshopsfromeoneowner', [shopController::class, 'allshopsfromeoneowner']);
+
 // ---------------ADS API ROUTE
 Route::post('addads', [adsController::class, 'addAds']);
 Route::post('alladsinfo', [adsController::class, 'allAdsinfo']);

@@ -56,9 +56,7 @@
                 <div title="home">
                   <i class="fa-solid fa-house" style="color: #000000;"></i>
                 </div>
-                <div title="market" >
-                  <i class="fa-solid fa-store" style="color: #000000;"></i>
-                </div>
+               
       
                 <div title="employee">
                   <i class="fa-solid fa-person-walking-arrow-right" style="color: #000000;"></i>
@@ -76,9 +74,18 @@
                 <div title="orders">
                   <i class="fa-solid fa-cart-shopping" style="color: #000000;"></i>
                 </div>
+                <div onclick="logout()" title="logout" >
+                  <i class="fa-solid fa-arrow-right-from-bracket" style="color: #000000;"></i>                </div>
       
               </div>
-      
+              <script>
+              function logout()
+              {
+                localStorage.clear();
+                window.location.href='/';
+
+              }
+              </script>
               <div class="main-content">
       
                 <div class="header">
@@ -144,7 +151,7 @@
                     <div>
                       <h3>Products</h3>
                       <p>Dashboard</p>
-                      <a href="javascript:void(0);" title="featured clay">Let's Go</a>
+                      <a href="/ShopProducts" title="featured clay">Let's Go</a>
                     </div>
       
                   </div>
@@ -156,7 +163,7 @@
                     <div>
                       <h3>Employees</h3>
                       <p>Dashboard</p>
-                      <a href="javascript:void(0);" title="featured clay">Let's Go</a>
+                      <a href="/ShopEmployees" title="featured clay">Let's Go</a>
                     </div>
       
                   </div>
@@ -180,7 +187,7 @@
                     <div>
                       <h3>Orders</h3>
                       <p>Dashboard</p>
-                      <a href="javascript:void(0);" title="featured clay">Let's Go</a>
+                      <a href="ShopOrders" title="featured clay">Let's Go</a>
                     </div>
       
                   </div>
@@ -200,7 +207,7 @@
         </div>
       
       </div>
-    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0-alpha3/dist/js/bootstrap.bundle.min.js" integrity="sha384-ENjdO4Dr2bkBIFxQpeoTz1HIcje39Wm4jDKdf19U8gI4ddQ3GYNS7NTKfAdVQSZe" crossorigin="anonymous"></script>
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0-alpha3/dist/js/bootstrap.bundle.min.js" integrity="sha384-ENjdO4Dr2bkBIFxQpeoTz1HIcje39Wm4jDKdf19U8gI4ddQ3GYNS7NTKfAdVQSZe" crossorigin="anonymous"></>
     <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.6.3/jquery.min.js"></script>
     <script src="https://cdn.jsdelivr.net/npm/sweetalert2@11"></script>
     <script src="/js/all.min.js"> </script>

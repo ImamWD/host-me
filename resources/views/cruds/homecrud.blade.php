@@ -39,11 +39,19 @@
                         <i style="margin-right:5px;" class="fa-solid fa-rectangle-ad"  style="color: #969593;" ></i>
                         <span>Advertisements</span>
                     </a>
-                    <a href="#">
+                    <a onclick="logout()" href="#">
                         <i style="margin-right:5px;" class="fa-solid fa-arrow-right-from-bracket"  style="color: #969593;" ></i>
                         <span>Logout</span>
                     </a>
                 </nav>
+                <script>
+                    function logout()
+                    {
+                      localStorage.clear();
+                      window.location.href='/';
+      
+                    }
+                    </script>
                
             </div>
             <div class="app-body-main-content">
@@ -77,10 +85,10 @@
                                 <h3>
                                     <span><i style="margin-right:5px" class="fa-solid fa-user" style="color: #000000;"></i> Users</span>
                                     
-                                        <div style="font-size: 16px"><i style="margin-right:3px " class="fa-regular fa-circle-dot" style="color: #000000;"></i>Owner</div>
-                                        <div style="font-size: 16px"><i style="margin-right:3px " class="fa-regular fa-circle-dot" style="color: #000000;"></i>O Employee</div>
-                                        <div style="font-size: 16px"><i style="margin-right:3px " class="fa-regular fa-circle-dot" style="color: #000000;"></i>Subscriber</div>
-                                        <div style="font-size: 16px"><i style="margin-right:3px " class="fa-regular fa-circle-dot" style="color: #000000;"></i>S Employee</div>
+                                        <div style="font-size: 16px"><i style="margin-right:3px " class="fa-regular fa-circle-dot" style="color: #000000;"></i>Admin</div>
+                                        <div style="font-size: 16px"><i style="margin-right:3px " class="fa-regular fa-circle-dot" style="color: #000000;"></i>Admin Employee</div>
+                                        <div style="font-size: 16px"><i style="margin-right:3px " class="fa-regular fa-circle-dot" style="color: #000000;"></i>Business Owner</div>
+                                        <div style="font-size: 16px"><i style="margin-right:3px " class="fa-regular fa-circle-dot" style="color: #000000;"></i>Owner Employee</div>
                                         <div style="font-size: 16px"><i style="margin-right:3px " class="fa-regular fa-circle-dot" style="color: #000000;"></i>Customer</div>
                                 </h3>
                                 

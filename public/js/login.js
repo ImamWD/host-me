@@ -67,8 +67,7 @@ function loginUser() //login api function
             localStorage.setItem('token', response.token);//store token in localStorage
             localStorage.setItem('user_id', response.user_id);//store token in localStorage
             localStorage.setItem('user_type', response.user_type);//store token in localStorage
-
-            window.location.href = '/home';//open home page after login succesfully
+            logtype();
         }
          else  //error for login input 400 incorrect email or pass , 401 formating error
          {
@@ -133,4 +132,37 @@ function checkbtn()
         loginbtn.classList.add('disabled');
         loginbtn.style.color="red";
     }
+}
+
+function logtype()
+{
+let type = localStorage.getItem('user_type');
+if(type == "owner" || type=="o_employee")
+{
+    window.location.href = '/HomeDashboard';
+}
+else if(type == "subscriber")
+{
+    sub();
+}
+
+}
+function sub() //signup api function
+{
+    const formData = new FormData();
+    formData.append('sub_id', localStorage.getItem('user_id'));
+    fetch('api/allshopsfromeoneowner',
+     {
+        method: 'POST',
+        body: formData
+    })
+      .then(response => response.json())
+      .then(data => sub1(data))
+      .catch();    
+} 
+function sub1(data)
+{
+    localStorage.setItem('shopId',data[0]['id']);
+    window.location.href = '/myShop';
+
 }
